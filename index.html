@@ -7,79 +7,227 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Way Village & Spa — AI Chat</title>
+<title>My Way Village & Spa — AI Tural</title>
 
 <style>
+
+/* =========================================================
+   ÜMUMİ
+========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
-    background:#edf0ec;
-    color:#263329;
-    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top left,#dcebdd 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#dce8df 0%,transparent 35%),
+        #eef2ee;
+    color:#243329;
+    font-family:
+        Arial,
+        "Segoe UI",
+        "Noto Sans",
+        sans-serif;
 }
+
+
+/* =========================================================
+   ƏSAS APP
+========================================================= */
 
 .app{
-    max-width:440px;
+    width:100%;
+    max-width:480px;
     height:100vh;
-    min-height:680px;
+    min-height:650px;
     margin:auto;
-    background:#f8f9f7;
+    background:#f8faf8;
     display:flex;
     flex-direction:column;
-    box-shadow:0 0 35px #0002;
+    position:relative;
+    overflow:hidden;
 }
 
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 .header{
-    background:linear-gradient(145deg,#23372a,#506754);
-    color:#fff;
-    padding:18px 18px 15px;
+    position:relative;
+    overflow:hidden;
+    padding:20px 18px 17px;
+    color:white;
+    background:
+        linear-gradient(
+            135deg,
+            #172d21 0%,
+            #294734 45%,
+            #5e8067 100%
+        );
+    box-shadow:0 5px 25px rgba(24,55,35,.25);
+}
+
+.header:after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-80px;
+    top:-100px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+}
+
+.header-top{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circle{
+    width:45px;
+    height:45px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    font-size:22px;
+    backdrop-filter:blur(8px);
 }
 
 .brand{
-    font-size:21px;
+    font-size:20px;
     font-weight:800;
-    letter-spacing:.4px;
+    letter-spacing:.3px;
 }
 
 .sub{
-    font-size:12px;
     margin-top:4px;
+    font-size:12px;
     opacity:.82;
 }
 
-.chat{
-    flex:1;
-    overflow:auto;
-    padding:16px 13px 10px;
+.ai-status{
+    position:relative;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:13px;
+    padding:6px 10px;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.16);
+    font-size:11px;
 }
 
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#7df09b;
+    box-shadow:0 0 10px #7df09b;
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+.chat{
+    flex:1;
+    overflow-y:auto;
+    padding:16px 13px 15px;
+    scroll-behavior:smooth;
+}
+
+.chat::-webkit-scrollbar{
+    width:5px;
+}
+
+.chat::-webkit-scrollbar-thumb{
+    background:#cbd6cc;
+    border-radius:10px;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
 .welcome{
-    background:#fff;
-    border:1px solid #e1e6e0;
-    border-radius:18px;
-    padding:15px;
-    margin-bottom:12px;
-    box-shadow:0 5px 18px #0000000b;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#ffffff,#f3f8f3);
+    border:1px solid #dfe8df;
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:13px;
+    box-shadow:0 8px 25px rgba(30,60,40,.07);
+}
+
+.welcome:before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-45px;
+    top:-45px;
+    background:#dcebdc;
+    border-radius:50%;
 }
 
 .welcome b{
+    position:relative;
+    z-index:2;
     font-size:17px;
 }
 
 .welcome p{
+    position:relative;
+    z-index:2;
     font-size:13px;
-    line-height:1.5;
-    color:#68736b;
-    margin:7px 0 0;
+    line-height:1.6;
+    color:#68756c;
+    margin:8px 0 0;
 }
+
+
+/* =========================================================
+   MESAJLAR
+========================================================= */
 
 .msg{
     display:flex;
-    margin:9px 0;
+    margin:10px 0;
+    animation:messageIn .25s ease;
+}
+
+@keyframes messageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .msg.user{
@@ -87,24 +235,41 @@ body{
 }
 
 .bubble{
-    max-width:84%;
-    padding:11px 13px;
-    border-radius:17px;
+    max-width:88%;
+    padding:12px 14px;
+    border-radius:18px;
     font-size:14px;
-    line-height:1.48;
+    line-height:1.55;
     white-space:pre-line;
+    word-wrap:break-word;
 }
 
 .bot .bubble{
     background:#fff;
-    border:1px solid #e0e5df;
+    border:1px solid #dfe7df;
     border-bottom-left-radius:5px;
+    color:#26342b;
+    box-shadow:0 5px 15px rgba(0,0,0,.04);
 }
 
 .user .bubble{
-    background:#304636;
+    background:
+        linear-gradient(135deg,#294a35,#426b4d);
     color:#fff;
     border-bottom-right-radius:5px;
+    box-shadow:0 5px 15px rgba(35,68,45,.18);
+}
+
+
+/* =========================================================
+   QUICK BUTTONS
+========================================================= */
+
+.quick-title{
+    padding:5px 13px 3px;
+    font-size:11px;
+    color:#7b887f;
+    background:#f8faf8;
 }
 
 .quick{
@@ -112,59 +277,156 @@ body{
     gap:7px;
     overflow-x:auto;
     padding:7px 11px 10px;
-    background:#f8f9f7;
+    background:#f8faf8;
+}
+
+.quick::-webkit-scrollbar{
+    display:none;
 }
 
 .quick button{
-    border:1px solid #d7dfd6;
+    flex-shrink:0;
+    border:1px solid #d5e0d5;
     background:#fff;
     border-radius:22px;
-    padding:9px 12px;
+    padding:9px 13px;
     white-space:nowrap;
-    color:#304535;
+    color:#304a37;
     cursor:pointer;
+    font-size:12px;
+    transition:.2s;
 }
 
 .quick button:hover{
-    background:#eef3ee;
+    background:#eaf2eb;
+    transform:translateY(-1px);
 }
+
+.quick button:active{
+    transform:scale(.96);
+}
+
+
+/* =========================================================
+   COMPOSER
+========================================================= */
 
 .composer{
     display:flex;
     gap:8px;
-    padding:9px 12px 14px;
-    border-top:1px solid #e1e5e1;
-    background:#fff;
+    padding:9px 12px 12px;
+    border-top:1px solid #e0e6e0;
+    background:rgba(255,255,255,.96);
 }
 
 .composer input{
     flex:1;
     min-width:0;
-    border:1px solid #d2dbd2;
-    border-radius:24px;
-    padding:12px 14px;
+    border:1px solid #d2ddd3;
+    border-radius:25px;
+    padding:12px 15px;
     outline:none;
     font-size:14px;
+    color:#263329;
+    background:#fafcfa;
 }
 
 .composer input:focus{
-    border-color:#6d8874;
+    border-color:#60816a;
+    box-shadow:0 0 0 3px rgba(76,117,87,.08);
 }
 
 .send{
     width:46px;
     height:46px;
+    flex-shrink:0;
     border:0;
     border-radius:50%;
-    background:#304636;
+    background:
+        linear-gradient(135deg,#284934,#54745b);
     color:#fff;
     font-size:18px;
     cursor:pointer;
+    box-shadow:0 5px 15px rgba(35,68,45,.2);
+    transition:.2s;
 }
 
 .send:hover{
-    background:#203528;
+    transform:scale(1.05);
 }
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp{
+    position:absolute;
+    right:14px;
+    bottom:78px;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:10px 13px 10px 10px;
+    border-radius:30px;
+    text-decoration:none;
+    color:#fff;
+    background:
+        linear-gradient(135deg,#16a34a,#22c55e);
+    box-shadow:
+        0 8px 25px rgba(22,163,74,.32);
+    font-size:12px;
+    font-weight:700;
+    animation:whatsappPulse 2.4s infinite;
+}
+
+.whatsapp-icon{
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+}
+
+@keyframes whatsappPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+
+}
+
+
+/* =========================================================
+   MENYU LINK
+========================================================= */
+
+.menu-link{
+    display:block;
+    margin:7px 13px 8px;
+    padding:11px;
+    border-radius:14px;
+    text-align:center;
+    text-decoration:none;
+    color:#35533e;
+    background:#edf5ee;
+    border:1px solid #d7e5d8;
+    font-size:12px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
 
 @media(min-width:600px){
 
@@ -174,8 +436,38 @@ body{
 
     .app{
         height:calc(100vh - 40px);
-        border-radius:22px;
+        border-radius:25px;
         overflow:hidden;
+        box-shadow:0 15px 50px rgba(20,50,30,.18);
+    }
+
+}
+
+
+/* =========================================================
+   KİÇİK TELEFONLAR
+========================================================= */
+
+@media(max-width:360px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .bubble{
+        max-width:92%;
+        font-size:13px;
+    }
+
+    .quick button{
+        font-size:11px;
+        padding:8px 10px;
+    }
+
+    .whatsapp{
+        right:9px;
+        bottom:77px;
+        padding:8px 10px 8px 8px;
     }
 
 }
@@ -187,92 +479,220 @@ body{
 
 <body>
 
+
 <div class="app">
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
 
-    <div class="brand">
-        MY WAY VILLAGE & SPA
+    <div class="header-top">
+
+        <div class="logo-circle">
+            🌿
+        </div>
+
+        <div>
+
+            <div class="brand">
+                MY WAY VILLAGE & SPA
+            </div>
+
+            <div class="sub">
+                Çayqovuşan, İsmayıllı • Hotel & Spa
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="sub">
-        Çayqovuşan, İsmayıllı • Hotel & Spa
+
+    <div class="ai-status">
+
+        <span class="status-dot"></span>
+
+        AI Tural aktivdir
+
     </div>
 
 </header>
 
 
 
+<!-- =====================================================
+     CHAT
+===================================================== -->
+
 <main class="chat" id="chat">
 
 
-<div class="welcome">
+    <div class="welcome">
 
-    <b>
-        Salam! My Way Village-ə xoş gəlmisiniz 👋
-    </b>
+        <b>
+            Salam! My Way Village-ə xoş gəlmisiniz 👋
+        </b>
 
-    <p>
-        Kotteclər, qiymətlər, endirim, SPA, restoran,
-        Ocaq Başı və digər xidmətlər haqqında sualınızı yaza bilərsiniz.
-    </p>
+        <p>
 
-</div>
+            Siz AI Tural ilə yazışırsınız.
+            Kotteclər, qiymətlər, SPA, restoran,
+            rezervasiya və digər xidmətlər haqqında
+            suallarınızı yaza bilərsiniz.
 
+        </p>
 
-<div class="msg bot">
-
-    <div class="bubble">
-        Sizə necə kömək edə bilərəm? 😊
     </div>
 
-</div>
+
+    <div class="msg bot">
+
+        <div class="bubble">
+
+            Sizə necə kömək edə bilərəm? 😊
+
+        </div>
+
+    </div>
 
 
 </main>
 
 
 
+<!-- =====================================================
+     MENYU
+===================================================== -->
+
+<a
+    class="menu-link"
+    href="https://tural-98.github.io/Hotelmenum/"
+    target="_blank"
+>
+    🍽️ Otel menyusuna bax
+</a>
+
+
+
+<!-- =====================================================
+     QUICK BUTTONS
+===================================================== -->
+
+<div class="quick-title">
+    Tez-tez soruşulanlar
+</div>
+
+
 <div class="quick">
+
 
     <button onclick="ask('Ümumi məlumat')">
         🏡 Ümumi məlumat
     </button>
 
+
     <button onclick="ask('Qiymətlər')">
         💰 Qiymətlər
     </button>
 
-    <button onclick="ask('15 faiz endirim')">
-        🎁 Endirim
+
+    <button onclick="ask('Standart Kottec')">
+        🏡 Standart
     </button>
+
+
+    <button onclick="ask('Duplex Kottec')">
+        🏠 Duplex
+    </button>
+
+
+    <button onclick="ask('VIP')">
+        ⭐ VIP
+    </button>
+
+
+    <button onclick="ask('Ovçu Evi')">
+        🌲 Ovçu Evi
+    </button>
+
 
     <button onclick="ask('SPA')">
         🧖 SPA
     </button>
 
+
     <button onclick="ask('Restoran')">
         🍽️ Restoran
     </button>
+
 
     <button onclick="ask('Ocaq Başı')">
         🔥 Ocaq Başı
     </button>
 
+
+    <button onclick="ask('Rezervasiya necə edilir?')">
+        📅 Rezervasiya
+    </button>
+
+
+    <button onclick="ask('Giriş və çıxış saatları')">
+        🕐 Giriş / Çıxış
+    </button>
+
+
+    <button onclick="ask('15 faiz endirim')">
+        🎁 Endirim
+    </button>
+
+
 </div>
 
 
 
-<form class="composer" onsubmit="send(event)">
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/994503099392"
+    target="_blank"
+    rel="noopener"
+>
+
+    <span class="whatsapp-icon">
+        ☎
+    </span>
+
+    WhatsApp
+
+</a>
+
+
+
+<!-- =====================================================
+     INPUT
+===================================================== -->
+
+<form
+    class="composer"
+    onsubmit="send(event)"
+>
 
     <input
         id="input"
+        type="text"
         placeholder="Sualınızı yazın..."
         autocomplete="off"
     >
 
-    <button class="send" type="submit">
+    <button
+        class="send"
+        type="submit"
+    >
         ➤
     </button>
 
@@ -294,24 +714,24 @@ body{
 const data = {
 
 
-/* =========================
-   STANDART KOTTEC
-========================= */
+/* =====================================================
+   STANDART
+===================================================== */
 
-standard: `🏡 STANDART KOTTEC
+standard: `🏡 STANDART KOTTECLƏR
 
 Ümumi sahə: 48 m²
 Tutum: 2 nəfər
 Qiymət: 250 AZN
 
-Qiymətə 2 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
+Qiymətə 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
-İmkanlar:
+Tərkibi və imkanları:
 
 • Geniş yataq otağı
 • Ayaqyolu və hamam
 • Balkon
-• Balkon masası və oturacaq dəsti
+• Balkonda masa və istirahət üçün oturacaq dəsti
 • Soyuducu
 • Televizor
 • Tefal çaydan
@@ -319,55 +739,55 @@ Qiymətə 2 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
 • Fen
 • Dəsmal və xalatlar
 • Diş dəsti
-• Sabun
-• Şampun
-• Duş geli
+• Sabun, şampun, duş geli
 • İsti/soyuq su
 • İsti döşəmə
 • Kondisioner`,
 
 
 
-/* =========================
+/* =====================================================
    DUPLEX
-========================= */
+===================================================== */
 
-duplex: `🏡 DUPLEX KOTTEC
+duplex: `🏠 DUPLEX KOTTECLƏR
 
 Ümumi sahə: 50 m²
 Tutum: 2 nəfər
 Qiymət: 250 AZN
 
-Qiymətə 2 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
+Qiymətə 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+
+Tərkibi və imkanları:
+
+• Geniş yataq otağı
+• Ayaqyolu və hamam
+• Balkon
+• Balkonda masa və istirahət üçün oturacaq dəsti
+• Soyuducu
+• Televizor
+• Tefal çaydan
+• Çay, kofe və su
+• Fen
+• Dəsmal və xalatlar
+• Diş dəsti
+• Sabun, şampun, duş geli
+• İsti/soyuq su
+• İsti döşəmə
+• Kondisioner
 
 1-ci mərtəbə:
 • Oturma sahəsi
 
 2-ci mərtəbə:
 • Yataq otağı
-• Balkon
-
-Həmçinin:
-
-• Soyuducu
-• Televizor
-• Tefal çaydan
-• Çay, kofe və su
-• Fen
-• Dəsmal və xalatlar
-• Diş dəsti
-• Sabun
-• Şampun
-• Duş geli
-• İsti/soyuq su
-• İsti döşəmə
-• Kondisioner`,
+• Balkon`,
 
 
 
-/* =========================
+/* =====================================================
    VIP TIP 1
-========================= */
+===================================================== */
 
 vip1: `⭐ VIP KOTTEC — TİP 1
 
@@ -375,14 +795,17 @@ vip1: `⭐ VIP KOTTEC — TİP 1
 Tutum: 4 nəfər
 Qiymət: 350 AZN
 
-Qiymətə 4 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
+Qiymətə 4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+
+Tərkibi:
 
 • 2 yataq otağı
-• Hər iki otağın ayrıca hamam və tualeti
+• Hər iki otağın ayrı-ayrı hamam və tualeti
 • Geniş oturma sahəsi
 • Mini-bar
 • Kiçik mətbəx
 • Balkon
+• Balkonda masa və istirahət üçün oturacaq dəsti
 • Soyuducu
 • Televizor
 • Tefal çaydan
@@ -390,30 +813,34 @@ Qiymətə 4 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
 • Fen
 • Dəsmal və xalatlar
 • Diş dəsti
-• Sabun
-• Şampun
-• Duş geli
+• Sabun, şampun, duş geli
 • İsti/soyuq su
 • İsti döşəmə
 • Kondisioner
 
-Ailə qrupları üçün idealdır.
-Kiçik mətbəxdən özünə xidmət üçün istifadə etmək mümkündür.`,
+Üstünlüklər:
+
+• Ailə qrupları üçün ideal
+• Daha çox şəxsi məkan
+• Mətbəxlə özünə xidmət imkanı`,
 
 
 
-/* =========================
+/* =====================================================
    VIP TIP 2
-========================= */
+===================================================== */
 
 vip2: `⭐ VIP KOTTEC — TİP 2
 
 2 ədəd mövcuddur
-2 mərtəbəlidir
+
+Mərtəbələr: 2 mərtəbəli
 Tutum: 4 nəfər
 Qiymət: 350 AZN
 
-Qiymətə 2 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
+Qiymətə 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+
+Plan:
 
 1-ci mərtəbə:
 • Oturma sahəsi
@@ -421,49 +848,19 @@ Qiymətə 2 nəfərlik səhər yeməyi, sauna və hovuz daxildir.
 2-ci mərtəbə:
 • 2 yataq otağı
 
-Bir kottecdə otaqlar tam ayrıdır.
-Digər kottecdə isə otaqlar daxili keçidlə bağlıdır.
+Bir kottecdə otaqlar bir-birindən tam ayrıdır.
 
-Hamam xüsusiyyətləri:
+Digər kottecdə otaqlar daxili keçidlə bağlıdır.
+
+Hamamlar:
 
 • Bir kottecdə hər iki hamamda jacuzzi mövcuddur.
-• Digər kottecdə dağ mənzərəli jacuzzi mövcuddur.
+• Digərində dağ mənzərəli jacuzzi mövcuddur.
 
-Həmçinin:
+Tərkibi və imkanları:
 
 • Balkon
-• Soyuducu
-• TV
-• Tefal çaydan
-• Çay, kofe və su
-• Fen
-• Dəsmal və xalat
-• Diş dəsti
-• Sabun
-• Şampun
-• Duş geli
-• İsti/soyuq su
-• İsti döşəmə
-• Kondisioner`,
-
-
-
-/* =========================
-   OVÇU EVİ
-========================= */
-
-hunter: `🏡 OVÇU EVİ
-
-Ümumi sahə: 30 m²
-Tutum: 2 nəfər
-Qiymət: 200 AZN
-
-Qiymətə 2 nəfərlik səhər yeməyi və sauna daxildir.
-
-• Geniş yataq otağı
-• Ayaqyolu və hamam
-• Balkon
-• Balkon masası və oturacaq dəsti
+• Balkonda masa və istirahət üçün oturacaq dəsti
 • Soyuducu
 • Televizor
 • Tefal çaydan
@@ -471,25 +868,332 @@ Qiymətə 2 nəfərlik səhər yeməyi və sauna daxildir.
 • Fen
 • Dəsmal və xalatlar
 • Diş dəsti
-• Sabun
-• Şampun
-• Duş geli
+• Sabun, şampun, duş geli
 • İsti/soyuq su
 • İsti döşəmə
-• Kondisioner`
+• Kondisioner`,
+
+
+
+/* =====================================================
+   OVÇU EVİ
+===================================================== */
+
+hunter: `🌲 OVÇU EVİ
+
+Ümumi sahə: 30 m²
+Tutum: 2 nəfər
+Qiymət: 200 AZN
+
+Qiymətə 2 nəfərlik səhər yeməyi + sauna daxildir.
+
+• Geniş yataq otağı
+• Ayaqyolu və hamam
+• Balkon
+• Balkonda masa və istirahət üçün oturacaq dəsti
+• Soyuducu
+• Televizor
+• Tefal çaydan
+• Çay, kofe və su
+• Fen
+• Dəsmal və xalatlar
+• Diş dəsti
+• Sabun, şampun, duş geli
+• İsti/soyuq su
+• İsti döşəmə
+• Kondisioner`,
+
+
+
+/* =====================================================
+   OTAQ ÜMUMİ MƏLUMAT
+===================================================== */
+
+inventory: `🏡 MY WAY VILLAGE — ÜMUMİ KOTTEC MƏLUMATI
+
+Otelimizdə ümumilikdə 18 kottec mövcuddur.
+
+• 4 Standart kottec
+• 10 Duplex kottec
+• 4 nəfərlik kotteclər
+
+10 Duplex kottec çarpayı tipinə görə:
+
+• 6 ədəd Twin — ayrı çarpayı
+• 4 ədəd Double / DBL — bir böyük çarpayı
+
+Duplex kotteclər vannalı/jacuzzili və sadə variantlara görə fərqlənə bilər.
+
+4 nəfərlik kotteclər isə müxtəlif tiplərdədir:
+
+• Sadə 1 mərtəbəli
+• Duplex, daxili keçidli və jakuzili
+• Duplex, jakuzili və ayrı otaqlı
+
+Konkret kottecin mövcudluğu və yerləşdirilməsi üçün komandamızla əlaqə saxlaya bilərsiniz.
+
+📞 +994 50 309 93 92`,
+
+
+
+/* =====================================================
+   SPA
+===================================================== */
+
+spa: `🧖 SPA MƏRKƏZİ
+
+1-ci mərtəbə:
+
+• Buxar otağı
+• Sauna
+• Tək nəfərlik isti kündə sauna
+• Tək nəfərlik soyuq kündə
+
+2-ci mərtəbə:
+
+• Masaj otaqları
+• Rahat oturma sahəsi
+• İçki içmək və dincəlmək üçün xüsusi zona
+
+Qonaqlar bütün kottec növlərində sauna paketindən yararlana bilərlər.`,
+
+
+
+/* =====================================================
+   RESTORAN
+===================================================== */
+
+restaurant: `🍽️ MY WAY VILLAGE RESTORANI
+
+Restoranımızda:
+
+• Səhər yeməyi
+• Əsas yeməklər
+• İsti və soyuq içkilər
+• Şirniyyatlar
+• Piti
+• Kabab
+• Quzu yeməkləri
+• Digər milli təamlar
+
+təqdim olunur.
+
+🍽️ Tam menyuya baxmaq üçün:
+Otel menyusu bölməsindən istifadə edə bilərsiniz.`,
+
+
+
+/* =====================================================
+   OCAQ BAŞI
+===================================================== */
+
+bbq: `🔥 OCAQ BAŞI — BARBEKÜ ZONASI
+
+Qonaqlar üçün xüsusi ayrılmış "Ocaq Başı" ərazimiz mövcuddur.
+
+Burada:
+
+• Qonaqlar dostları ilə birlikdə ocaq qalayıb istirahət edə bilirlər.
+• Restorandan çay və digər içkilər sifariş etmək mümkündür.
+• Kebab və digər ətlər qonaqlar tərəfindən özləri bişirilə bilər.
+• Lazım olan şiş, qab-qacaq və digər vasitələri restorandan götürmək mümkündür.
+
+Bu zona həm ailələr, həm də dost qrupları üçün ideal istirahət məkanıdır.`,
+
+
+
+/* =====================================================
+   CHECK IN / CHECK OUT
+===================================================== */
+
+checkin: `🕐 GİRİŞ VƏ ÇIXIŞ SAATLARI
+
+Giriş (Check-in):
+14:00
+
+Çıxış (Check-out):
+12:00
+
+Qonaq gün ərzində daha gec saatda daxil olsa belə,
+çıxış vaxtı 12:00 olaraq qalır.
+
+Məsələn, bu gün saat 18:00-da daxil olsanız,
+növbəti gün çıxış saatı 12:00-dır.`,
+
+
+
+/* =====================================================
+   REZERVASİYA
+===================================================== */
+
+reservation: `📅 REZERVASİYA
+
+Rezervasiya etmək üçün:
+
+📞 +994 50 309 93 92
+
+nömrəsi ilə zəhmət olmasa əlaqə saxlayın.
+
+Rezervasiyanı qeyd etmək üçün:
+
+• Ad
+• Soyad
+• Giriş tarixi
+• Çıxış tarixi
+
+qeyd olunmalıdır.
+
+WhatsApp vasitəsilə və ya telefon zəngi ilə əlaqə saxlaya bilərsiniz.`,
+
+
+
+/* =====================================================
+   ENDİRİM
+===================================================== */
+
+discount: `🎁 15% ENDİRİM
+
+Hal-hazırda ayın sonuna kimi 15% endirim mövcuddur.
+
+⚠️ Endirim xüsusi günlərdə və bayram günlərində nəzərə alınmır.
+
+Konkret kottecin endirimli qiymətini hesablamaq üçün
+kottecin adını və tarixi yaza bilərsiniz.`,
+
+
+
+/* =====================================================
+   EXTRA BED
+===================================================== */
+
+extra: `👤 EXTRA BED / ƏLAVƏ ŞƏXS
+
+5 yaşdan yuxarı 1 əlavə şəxs üçün:
+
++20 AZN
+
+Məsələn:
+
+2 nəfərlik otaqda 3-cü şəxs 5 yaşdan yuxarıdırsa:
++20 AZN əlavə olunur.
+
+4-cü şəxs də qalırsa:
+yenə +20 AZN əlavə olunur.
+
+Bu qayda bütün otaq/kottec növlərində eynidir.
+
+4 nəfərlik kottecdə 5 yaşdan yuxarı əlavə şəxs qalırsa:
++20 AZN əlavə olunur.
+
+5-ci və digər əlavə şəxslər üçün də:
++20 AZN / nəfər.`,
+
+
+
+/* =====================================================
+   ƏLAQƏ
+===================================================== */
+
+contact: `📞 ƏLAQƏ
+
+My Way Village & Spa
+
+Telefon / WhatsApp:
++994 50 309 93 92
+
+Siz həmçinin aşağıdakı WhatsApp düyməsindən birbaşa komandamızla əlaqə saxlaya bilərsiniz.`,
+
+
+
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+
+instagram: `📱 INSTAGRAM
+
+Instagram səhifəmizdə bizi izləməyi unutmayın.
+
+Beləliklə yeni paylaşımlardan və yeniliklərdən xəbərdar ola bilərsiniz.
+
+Instagram:
+mywayvillage.az`,
+
+
+
+/* =====================================================
+   YOUTUBE
+===================================================== */
+
+youtube: `▶️ YOUTUBE
+
+YouTube səhifəmizdə videolarımız
+"My Way Village & Spa"
+adı ilə yayımlanır.`,
+
+
+
+/* =====================================================
+   BOOKING
+===================================================== */
+
+booking: `📅 BOOKING
+
+Otelimizdə rezervasiya üçün Booking səhifəmizdən də istifadə edə bilərsiniz.
+
+Axtarış sistemində:
+
+"My Way Village Hotel & Spa"
+
+adını qeyd etdikdə otelimizin Booking səhifəsi görünəcək.`,
+
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+location: `📍 OTELİN KONUMU
+
+Otelimizin konumunu Google Maps və ya Waze proqramında görə bilərsiniz.
+
+Axtarış bölməsinə:
+
+"My Way Village Hotel & Spa"
+
+yazaraq otelimizi tapa bilərsiniz.
+
+Ünvan:
+Çayqovuşan kəndi, İsmayıllı rayonu.`,
+
+
+
+/* =====================================================
+   AI
+===================================================== */
+
+ai: `🤖 SİZ AI TURAL İLƏ YAZIŞIRSINIZ
+
+Mən My Way Village & Spa haqqında hazır məlumat bazasında olan suallara cavab verirəm.
+
+Xahiş edirəm mövzuya uyğun suallar verin.
+
+Əgər sualınız məlumat bazasında yoxdursa,
+sizi komandamıza yönləndirəcəyəm.
+
+📞 +994 50 309 93 92`
 
 };
 
 
 
 /* =========================================================
-   AZƏRBAYCAN HƏRFLƏRİNİ NORMALA SALAN FUNKSİYA
+   TÜRK / AZƏRBAYCAN HƏRFLƏRİNİ NORMALA SALIR
 ========================================================= */
 
 function normalizeText(text){
 
     return text
-        .toLowerCase()
+        .toLocaleLowerCase("az-AZ")
         .trim()
         .replace(/ə/g,"e")
         .replace(/ı/g,"i")
@@ -497,8 +1201,7 @@ function normalizeText(text){
         .replace(/ü/g,"u")
         .replace(/ş/g,"s")
         .replace(/ç/g,"c")
-        .replace(/ğ/g,"g")
-        .replace(/İ/g,"i");
+        .replace(/ğ/g,"g");
 
 }
 
@@ -524,40 +1227,52 @@ function add(text,who="bot"){
 
     document.getElementById("chat").appendChild(wrap);
 
-    document.getElementById("chat").scrollTop=999999;
+    const chat=document.getElementById("chat");
+
+    setTimeout(function(){
+        chat.scrollTop=chat.scrollHeight;
+    },20);
 
 }
 
 
 
 /* =========================================================
-   BÜTÜN KOTTECLƏR
+   BÜTÜN QİYMƏTLƏR
 ========================================================= */
 
 function allPrices(){
 
-return `🏡 MY WAY VILLAGE — KOTTEC QİYMƏTLƏRİ
+return `🏡 MY WAY VILLAGE & SPA
+
+KOTTEC VƏ OTAQ QİYMƏTLƏRİ
 
 ━━━━━━━━━━━━━━━━
 
 🏡 STANDART KOTTEC
-48 m² • 2 nəfər
+
+48 m²
+2 nəfər
 250 AZN
 
-Səhər yeməyi + sauna + hovuz daxildir.
+2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
 ━━━━━━━━━━━━━━━━
 
-🏡 DUPLEX KOTTEC
-50 m² • 2 nəfər
+🏠 DUPLEX KOTTEC
+
+50 m²
+2 nəfər
 250 AZN
 
-Səhər yeməyi + sauna + hovuz daxildir.
+2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
 ━━━━━━━━━━━━━━━━
 
 ⭐ VIP KOTTEC — TİP 1
-50 m² • 4 nəfər
+
+50 m²
+4 nəfər
 350 AZN
 
 4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
@@ -565,23 +1280,38 @@ Səhər yeməyi + sauna + hovuz daxildir.
 ━━━━━━━━━━━━━━━━
 
 ⭐ VIP KOTTEC — TİP 2
-2 ədəd • 4 nəfər
+
+2 ədəd
+4 nəfər
 350 AZN
 
 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
 ━━━━━━━━━━━━━━━━
 
-🏡 OVÇU EVİ
-30 m² • 2 nəfər
+🌲 OVÇU EVİ
+
+30 m²
+2 nəfər
 200 AZN
 
 2 nəfərlik səhər yeməyi + sauna daxildir.
 
 ━━━━━━━━━━━━━━━━
 
-👤 Əlavə şəxs:
-5 yaşdan yuxarı hər əlavə şəxs üçün +20 AZN.`;
+👤 ƏLAVƏ ŞƏXS
+
+5 yaşdan yuxarı:
++20 AZN / nəfər
+
+━━━━━━━━━━━━━━━━
+
+🎁 HAL-HAZIRDA
+
+Ayın sonuna kimi 15% endirim mövcuddur.
+
+Xüsusi və bayram günlərində endirim nəzərə alınmır.`;
+
 }
 
 
@@ -590,14 +1320,14 @@ Səhər yeməyi + sauna + hovuz daxildir.
    CAVAB SİSTEMİ
 ========================================================= */
 
-function answer(q){
+function answer(question){
 
-    const x=normalizeText(q);
+    const x=normalizeText(question);
 
 
-    /* =========================
+    /* =====================================================
        SALAM
-    ========================= */
+    ===================================================== */
 
     if(
         x==="salam" ||
@@ -606,13 +1336,14 @@ function answer(q){
     ){
 
         return "Salam! 👋 My Way Village & Spa-ya xoş gəlmisiniz. Sizə necə kömək edə bilərəm?";
+
     }
 
 
 
-    /* =========================
-       AXŞAM
-    ========================= */
+    /* =====================================================
+       AXŞAMINIZ XEYİR
+    ===================================================== */
 
     if(
         x.includes("axsaminiz xeyir") ||
@@ -620,13 +1351,14 @@ function answer(q){
     ){
 
         return "Axşamınız xeyir! 🌙 Sizə necə kömək edə bilərəm?";
+
     }
 
 
 
-    /* =========================
-       SƏHƏR
-    ========================= */
+    /* =====================================================
+       SABAHINIZ XEYİR
+    ===================================================== */
 
     if(
         x.includes("sabahiniz xeyir") ||
@@ -634,47 +1366,53 @@ function answer(q){
     ){
 
         return "Sabahınız xeyir! ☀️ Sizə necə kömək edə bilərəm?";
+
     }
 
 
 
     /* =====================================================
-       ÜMUMİ MƏLUMAT / BÜTÜN QİYMƏTLƏR
+       AI TURAL
+    ===================================================== */
+
+    if(
+        x.includes("ai tural") ||
+        x.includes("sen kimsən") ||
+        x.includes("sen kimsən") ||
+        x.includes("kimle yazisiram") ||
+        x.includes("kimle danisiram")
+    ){
+
+        return data.ai;
+
+    }
+
+
+
+    /* =====================================================
+       ÜMUMİ MƏLUMAT
     ===================================================== */
 
     if(
 
         x.includes("umumi melumat") ||
-
         x.includes("umumi melumat ver") ||
-
         x.includes("butun otaglar") ||
-
         x.includes("butun otaqlar") ||
-
         x.includes("butun kottecler") ||
-
         x.includes("butun kottecler") ||
-
         x.includes("butun qiymetler") ||
-
-        x.includes("umumi qiymet") ||
-
-        x.includes("qiymetler") ||
-
-        x.includes("qiymetleri") ||
-
         x.includes("otaq qiymetleri") ||
-
+        x.includes("otaqlarin qiymetleri") ||
         x.includes("kottec qiymetleri") ||
-
-        x.includes("otaqlar haqqinda") ||
-
-        x.includes("kottecler haqqinda") ||
-
+        x.includes("kotteclerin qiymetleri") ||
         x.includes("ne qederdir") ||
-
-        x.includes("necedir qiymetler")
+        x==="qiymetler" ||
+        x==="qiymet" ||
+        x==="otaqlar" ||
+        x==="kottecler" ||
+        x==="otaq" ||
+        x==="kottec"
 
     ){
 
@@ -685,16 +1423,15 @@ function answer(q){
 
 
     /* =====================================================
-       STANDART KOTTEC
+       STANDART
     ===================================================== */
 
     if(
 
         x.includes("standart") ||
-
         x.includes("standart kottec") ||
-
-        x.includes("standart otaq")
+        x.includes("standart otaq") ||
+        x.includes("standartin qiymeti")
 
     ){
 
@@ -705,20 +1442,73 @@ function answer(q){
 
 
     /* =====================================================
-       DUPLEX KOTTEC
+       DUPLEX
     ===================================================== */
 
     if(
 
         x.includes("duplex") ||
-
         x.includes("dupleks") ||
-
-        x.includes("duplex kottec")
+        x.includes("duplex kottec") ||
+        x.includes("duplex otaq")
 
     ){
 
         return data.duplex;
+
+    }
+
+
+
+    /* =====================================================
+       TWIN / DBL / ÇARPAYI
+    ===================================================== */
+
+    if(
+
+        x.includes("twin") ||
+        x.includes("twinn") ||
+        x.includes("ayri carpayi") ||
+        x.includes("ayri carpayi") ||
+        x.includes("iki ayri carpayi") ||
+        x.includes("iki carpayi")
+
+    ){
+
+        return `🛏️ TWIN ÇARPAYI
+
+Otelimizdə 10 Duplex kottecdən:
+
+• 6 ədəd Twin — ayrı çarpayılı
+• 4 ədəd Double / DBL — bir böyük çarpayılı
+
+Twin və ya Double/DBL seçimində konkret mövcudluğu rezervasiya zamanı komandamızla dəqiqləşdirə bilərsiniz.
+
+📞 +994 50 309 93 92`;
+
+    }
+
+
+
+    if(
+
+        x.includes("double") ||
+        x.includes("dbl") ||
+        x.includes("boyuk carpayi") ||
+        x.includes("bir boyuk carpayi")
+
+    ){
+
+        return `🛏️ DOUBLE / DBL ÇARPAYI
+
+Otelimizdə 10 Duplex kottecdən:
+
+• 4 ədəd Double / DBL — bir böyük çarpayılı
+• 6 ədəd Twin — ayrı çarpayılı
+
+Konkret mövcudluğu rezervasiya zamanı komandamızla dəqiqləşdirə bilərsiniz.
+
+📞 +994 50 309 93 92`;
 
     }
 
@@ -731,11 +1521,8 @@ function answer(q){
     if(
 
         x.includes("vip tip 1") ||
-
         x.includes("vip 1") ||
-
         x.includes("vip tip bir") ||
-
         x.includes("vip bir")
 
     ){
@@ -753,18 +1540,14 @@ function answer(q){
     if(
 
         x.includes("vip tip 2") ||
-
         x.includes("vip 2") ||
-
         x.includes("vip tip iki") ||
-
         x.includes("vip iki") ||
-
         x.includes("jacuzzi") ||
-
         x.includes("cakkuzi") ||
-
-        x.includes("cakuzi")
+        x.includes("cakuzi") ||
+        x.includes("jakuzzi") ||
+        x.includes("jakuzili")
 
     ){
 
@@ -781,26 +1564,29 @@ function answer(q){
     if(
 
         x==="vip" ||
-
         x==="vip kottec" ||
-
-        x==="vip kottecler"
+        x==="vip kottecler" ||
+        x==="vip kottec qiymeti"
 
     ){
 
         return `⭐ VIP KOTTECLƏR
 
-Bizdə 2 növ VIP kottec mövcuddur:
+Bizdə VIP kotteclərin əsasən 2 tipi mövcuddur:
 
 1️⃣ VIP Tip 1
 50 m²
 4 nəfər
 350 AZN
 
+4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+
 2️⃣ VIP Tip 2
 2 ədəd
 4 nəfər
 350 AZN
+
+2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
 İstəsəniz "VIP Tip 1" və ya "VIP Tip 2" yazaraq ətraflı məlumat əldə edə bilərsiniz.`;
 
@@ -809,16 +1595,14 @@ Bizdə 2 növ VIP kottec mövcuddur:
 
 
     /* =====================================================
-       OVÇU EVİ
+       OVÇU
     ===================================================== */
 
     if(
 
         x.includes("ovcu evi") ||
-
-        x.includes("ovcu") ||
-
-        x.includes("ovcu evi kottec")
+        x==="ovcu" ||
+        x.includes("ovcu kottec")
 
     ){
 
@@ -829,182 +1613,85 @@ Bizdə 2 növ VIP kottec mövcuddur:
 
 
     /* =====================================================
-       ƏLAVƏ ŞƏXS
+       18 KOTTEC / SAY
     ===================================================== */
 
     if(
 
-        x.includes("elave sexs") ||
-
-        x.includes("elave") ||
-
-        x.includes("extra") ||
-
-        x.includes("5 yas") ||
-
-        x.includes("5 yasdan") ||
-
-        x.includes("usaq ucun") ||
-
-        x.includes("3 nefer") ||
-
-        x.includes("4 nefer") ||
-
-        x.includes("5 nefer")
+        x.includes("nece kottec var") ||
+        x.includes("ne qeder kottec var") ||
+        x.includes("otelde nece kottec var") ||
+        x.includes("kottec sayi") ||
+        x.includes("otaq sayi")
 
     ){
 
-        return `👤 ƏLAVƏ ŞƏXS QAYDASI
-
-5 yaşdan yuxarı hər əlavə şəxs üçün +20 AZN hesablanır.
-
-Məsələn:
-
-2 nəfərlik kottecdə 3-cü şəxs 5 yaşdan yuxarıdırsa:
-+20 AZN
-
-4-cü və sonrakı əlavə şəxslər üçün də:
-+20 AZN / nəfər
-
-Bu qayda bütün kottec növlərinə aiddir.
-
-4 nəfərlik kottecdə 5-ci və sonrakı 5+ yaşlı şəxslər üçün də:
-+20 AZN / nəfər`;
+        return data.inventory;
 
     }
 
 
 
     /* =====================================================
-       ENDİRİM
+       CHECK IN / CHECK OUT
     ===================================================== */
 
     if(
 
-        x.includes("endirim") ||
-
-        x.includes("15 faiz") ||
-
-        x.includes("15%")
+        x.includes("giris") ||
+        x.includes("cixis") ||
+        x.includes("check in") ||
+        x.includes("check out") ||
+        x.includes("saat neceden") ||
+        x.includes("saat necede") ||
+        x.includes("ne vaxt daxil") ||
+        x.includes("ne vaxt cix")
 
     ){
 
-        return `🎁 ENDİRİM
-
-Hazırda ayın sonuna qədər 15% endirim tətbiq olunur.
-
-⚠️ Qeyd:
-Endirim xüsusi günlərə və bayram günlərinə aid deyil.
-
-İstəsəniz konkret kottec və tarix yazın,
-endirimli qiyməti hesablaya bilərik.`;
+        return data.checkin;
 
     }
 
 
 
     /* =====================================================
-       SPA
+       BUGÜN GƏLSƏK / 12:00
     ===================================================== */
 
     if(
 
-        x.includes("spa") ||
-
-        x.includes("sauna") ||
-
-        x.includes("buxar") ||
-
-        x.includes("buxar otagi")
+        x.includes("bugun gelsek") ||
+        x.includes("bugun gelsək") ||
+        x.includes("12") ||
+        x.includes("gec girsek") ||
+        x.includes("gec daxil olsaq") ||
+        x.includes("girsek ne vaxt cixiriq")
 
     ){
 
-        return `🧖 SPA MƏRKƏZİ
-
-1-ci mərtəbə:
-
-• Buxar otağı
-• Sauna
-• Tək nəfərlik isti kündə sauna
-• Tək nəfərlik soyuq kündə
-
-2-ci mərtəbə:
-
-• Masaj otaqları
-• Rahat oturma sahəsi
-• İçki içmək və dincəlmək üçün xüsusi zona
-
-Qonaqlar bütün kottec növlərində sauna paketindən yararlana bilərlər.`;
+        return data.checkin;
 
     }
 
 
 
     /* =====================================================
-       RESTORAN
+       REZERVASIYA
     ===================================================== */
 
     if(
 
-        x.includes("restoran") ||
-
-        x.includes("yemek") ||
-
-        x.includes("menyu") ||
-
-        x.includes("kabab") ||
-
-        x.includes("piti") ||
-
-        x.includes("quzu")
+        x.includes("rezervasiya") ||
+        x.includes("rezerv") ||
+        x.includes("bron") ||
+        x.includes("nece rezervasiya") ||
+        x.includes("rezervasiyani nece") ||
+        x.includes("otaq bron")
 
     ){
 
-        return `🍽️ MY WAY VILLAGE RESTORANI
-
-Restoranımızda:
-
-• Səhər yeməyi
-• Əsas yeməklər
-• İsti və soyuq içkilər
-• Şirniyyatlar
-• Piti
-• Kabab
-• Quzu yeməkləri
-• Digər milli təamlar
-
-təqdim olunur.`;
-
-    }
-
-
-
-    /* =====================================================
-       OCAQ BAŞI
-    ===================================================== */
-
-    if(
-
-        x.includes("ocaq basi") ||
-
-        x.includes("ocaq") ||
-
-        x.includes("barbeku") ||
-
-        x.includes("barbeku zonasi")
-
-    ){
-
-        return `🔥 OCAQ BAŞI — BARBEKÜ ZONASI
-
-Qonaqlar ailələri və dostları ilə birlikdə
-ocaq qalayıb istirahət edə bilərlər.
-
-• Kebab və digər ətləri özləri bişirə bilərlər.
-• Şiş, qab-qacaq və digər vasitələri restorandan götürə bilərlər.
-• Restorandan çay və digər içkilər sifariş etmək mümkündür.
-
-Ailə və dost qrupları üçün ideal istirahət məkanıdır.`;
+        return data.reservation;
 
     }
 
@@ -1017,23 +1704,120 @@ Ailə və dost qrupları üçün ideal istirahət məkanıdır.`;
     if(
 
         x.includes("booking") ||
-
-        x.includes("rezervasiya") ||
-
-        x.includes("rezerv") ||
-
-        x.includes("bron")
+        x.includes("bookingden") ||
+        x.includes("bookingden rezerv")
 
     ){
 
-        return `📅 REZERVASİYA
+        return data.booking;
 
-Rezervasiya üçün Booking-də
-"My Way Village Hotel & Spa" səhifəmizdən istifadə edə bilərsiniz.
+    }
 
-Həmçinin axtarış sistemində
-"My Way Village Hotel & Spa"
-yazaraq səhifəmizi tapa bilərsiniz.`;
+
+
+    /* =====================================================
+       EXTRA BED
+    ===================================================== */
+
+    if(
+
+        x.includes("extra") ||
+        x.includes("extra bed") ||
+        x.includes("elave sexs") ||
+        x.includes("elave nefer") ||
+        x.includes("5 yas") ||
+        x.includes("5 yasdan") ||
+        x.includes("usaq") ||
+        x.includes("3 nefer") ||
+        x.includes("4 nefer") ||
+        x.includes("5 nefer")
+
+    ){
+
+        return data.extra;
+
+    }
+
+
+
+    /* =====================================================
+       ENDİRİM
+    ===================================================== */
+
+    if(
+
+        x.includes("endirim") ||
+        x.includes("15 faiz") ||
+        x.includes("15%") ||
+        x.includes("kampaniya")
+
+    ){
+
+        return data.discount;
+
+    }
+
+
+
+    /* =====================================================
+       SPA
+    ===================================================== */
+
+    if(
+
+        x.includes("spa") ||
+        x.includes("sauna") ||
+        x.includes("buxar") ||
+        x.includes("masaj") ||
+        x.includes("kundle")
+
+    ){
+
+        return data.spa;
+
+    }
+
+
+
+    /* =====================================================
+       RESTORAN
+    ===================================================== */
+
+    if(
+
+        x.includes("restoran") ||
+        x.includes("yemek") ||
+        x.includes("yemekler") ||
+        x.includes("menyu") ||
+        x.includes("kabab") ||
+        x.includes("piti") ||
+        x.includes("quzu") ||
+        x.includes("sirniyyat")
+
+    ){
+
+        return data.restaurant;
+
+    }
+
+
+
+    /* =====================================================
+       OCAQ BAŞI
+    ===================================================== */
+
+    if(
+
+        x.includes("ocaq basi") ||
+        x.includes("ocaq") ||
+        x.includes("barbeku") ||
+        x.includes("barbeku zonasi") ||
+        x.includes("kebab bişirmək") ||
+        x.includes("kebab bisirmek")
+
+    ){
+
+        return data.bbq;
 
     }
 
@@ -1046,18 +1830,11 @@ yazaraq səhifəmizi tapa bilərsiniz.`;
     if(
 
         x.includes("instagram") ||
-
         x.includes("insta")
 
     ){
 
-        return `📱 INSTAGRAM
-
-Instagram səhifəmizi izləməyi unutmayın.
-
-Yeni paylaşımlar və yeniliklərdən xəbərdar olmaq üçün:
-
-mywayvillage.az`;
+        return data.instagram;
 
     }
 
@@ -1070,51 +1847,61 @@ mywayvillage.az`;
     if(
 
         x.includes("youtube") ||
-
         x.includes("yutub")
 
     ){
 
-        return `▶️ YOUTUBE
-
-YouTube səhifəmizdə
-"My Way Village & Spa"
-adı ilə videolarımız yayımlanır.`;
+        return data.youtube;
 
     }
 
 
 
     /* =====================================================
-       ƏLAQƏ
+       KONUM
+    ===================================================== */
+
+    if(
+
+        x.includes("konum") ||
+        x.includes("location") ||
+        x.includes("harada") ||
+        x.includes("yeriniz") ||
+        x.includes("google maps") ||
+        x.includes("waze") ||
+        x.includes("adres") ||
+        x.includes("unvan")
+
+    ){
+
+        return data.location;
+
+    }
+
+
+
+    /* =====================================================
+       TELEFON / ƏLAQƏ
     ===================================================== */
 
     if(
 
         x.includes("telefon") ||
-
         x.includes("nomre") ||
-
         x.includes("elaqe") ||
-
-        x.includes("telefon nomresi") ||
-
-        x.includes("elaqe nomresi")
+        x.includes("whatsapp") ||
+        x.includes("whatsap")
 
     ){
 
-        return `📞 ƏLAQƏ
-
-Əlaqə nömrəmiz:
-
-+994 50 309 93 92`;
+        return data.contact;
 
     }
 
 
 
     /* =====================================================
-       DEFAULT — MƏLUMAT YOXDUR
+       DEFAULT
     ===================================================== */
 
     return `Bu sual üçün hazır məlumat bazamızda dəqiq cavab yoxdur.
@@ -1122,51 +1909,73 @@ adı ilə videolarımız yayımlanır.`;
 Zəhmət olmasa komandamızla əlaqə saxlayın,
 sizi məmnuniyyətlə cavablandıracaqlar.
 
-📞 +994 50 309 93 92`;
+📞 +994 50 309 93 92
+
+💬 WhatsApp vasitəsilə də əlaqə saxlaya bilərsiniz.`;
 
 }
 
 
 
 /* =========================================================
-   SUAL VER
+   SORĞU
 ========================================================= */
 
-function ask(q){
+function ask(question){
 
-    add(q,"user");
+    add(question,"user");
 
     setTimeout(function(){
 
-        add(answer(q),"bot");
+        add(answer(question),"bot");
 
-    },250);
+    },300);
 
 }
 
 
 
 /* =========================================================
-   INPUTDAN GÖNDƏR
+   INPUT
 ========================================================= */
 
-function send(e){
+function send(event){
 
-    e.preventDefault();
+    event.preventDefault();
 
     const input=document.getElementById("input");
 
-    const q=input.value.trim();
+    const question=input.value.trim();
 
-    if(!q){
+    if(!question){
         return;
     }
 
     input.value="";
 
-    ask(q);
+    ask(question);
 
 }
+
+
+/* =========================================================
+   ENTER İLƏ AVTOMATİK İŞLƏMƏ
+========================================================= */
+
+document.getElementById("input").addEventListener("keydown",function(event){
+
+    if(event.key==="Enter"){
+
+        event.preventDefault();
+
+        document.querySelector(".composer").dispatchEvent(
+            new Event("submit",{cancelable:true})
+        );
+
+    }
+
+});
+
 
 </script>
 
