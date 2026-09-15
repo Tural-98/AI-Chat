@@ -4,95 +4,87 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
       content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               viewport-fit=cover">
+      initial-scale=1,
+      maximum-scale=1,
+      user-scalable=no,
+      viewport-fit=cover">
 
 <title>My Way Village & Spa — AI Tural</title>
 
 <style>
 
 /* =========================================================
-   ÜMUMİ
+   RESET
 ========================================================= */
 
 *{
     box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
-}
-
-html{
-    width:100%;
-    height:100%;
-    scroll-behavior:smooth;
-}
-
-body{
     margin:0;
+    padding:0;
+}
+
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
+}
 
-    background:
-        radial-gradient(circle at top left,#dcebdd 0%,transparent 35%),
-        radial-gradient(circle at bottom right,#dce8df 0%,transparent 35%),
-        #eef2ee;
-
-    color:#243329;
-
+body{
     font-family:
-        Arial,
+        -apple-system,
+        BlinkMacSystemFont,
         "Segoe UI",
-        "Noto Sans",
+        Arial,
         sans-serif;
+
+    background:#e9eee9;
+    color:#1f2d24;
 
     -webkit-text-size-adjust:100%;
 }
 
 
 /* =========================================================
-   ƏSAS APP
+   APP
 ========================================================= */
 
 .app{
 
     width:100%;
-    max-width:480px;
+    max-width:500px;
 
-    /* ƏSAS DÜZƏLİŞ */
-    height:100vh;
+    height:100%;
     height:100dvh;
-
-    min-height:0;
 
     margin:auto;
 
-    background:#f8faf8;
+    background:#f7faf7;
 
     display:flex;
     flex-direction:column;
 
-    position:relative;
-
     overflow:hidden;
+
+    position:relative;
 }
 
 
 /* =========================================================
-   HEADER
+   PREMIUM HEADER
 ========================================================= */
 
 .header{
 
-    position:relative;
-    overflow:hidden;
+    flex:0 0 auto;
 
-    flex-shrink:0;
+    position:relative;
 
     padding:
-        calc(18px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-top))
         18px
         15px;
 
@@ -101,31 +93,59 @@ body{
     background:
         linear-gradient(
             135deg,
-            #172d21 0%,
-            #294734 45%,
-            #5e8067 100%
+            #10281b 0%,
+            #1d3c29 48%,
+            #496c53 100%
         );
 
+    overflow:hidden;
+
     box-shadow:
-        0 5px 25px rgba(24,55,35,.25);
+        0 8px 30px rgba(20,50,30,.22);
+
+    z-index:10;
 }
 
-.header:after{
+.header::before{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:220px;
+    height:220px;
 
-    right:-80px;
-    top:-100px;
+    right:-110px;
+    top:-130px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.08);
+    background:
+        rgba(255,255,255,.07);
 }
+
+.header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    left:-80px;
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:
+        rgba(150,210,160,.08);
+}
+
+
+/* =========================================================
+   HEADER TOP
+========================================================= */
 
 .header-top{
 
@@ -138,66 +158,84 @@ body{
     gap:12px;
 }
 
-.logo-circle{
+.logo{
 
-    width:45px;
-    height:45px;
+    width:48px;
+    height:48px;
 
-    flex-shrink:0;
+    flex:0 0 48px;
 
-    border-radius:15px;
+    border-radius:16px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    background:rgba(255,255,255,.14);
+    font-size:23px;
 
-    border:1px solid rgba(255,255,255,.25);
+    background:
+        rgba(255,255,255,.13);
 
-    font-size:22px;
+    border:
+        1px solid rgba(255,255,255,.20);
 
-    backdrop-filter:blur(8px);
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.15),
+        0 6px 20px rgba(0,0,0,.10);
+
+    backdrop-filter:blur(10px);
 }
 
 .brand{
 
-    font-size:20px;
+    font-size:18px;
     font-weight:800;
 
     letter-spacing:.3px;
+
+    white-space:nowrap;
 }
 
 .sub{
 
     margin-top:4px;
 
-    font-size:12px;
+    font-size:11px;
 
-    opacity:.82;
+    color:
+        rgba(255,255,255,.72);
 }
+
+
+/* =========================================================
+   AI STATUS
+========================================================= */
 
 .ai-status{
 
     position:relative;
-    z-index:2;
+    z-index:3;
 
     display:inline-flex;
     align-items:center;
 
-    gap:6px;
+    gap:7px;
 
-    margin-top:13px;
+    margin-top:12px;
 
-    padding:6px 10px;
+    padding:6px 11px;
 
-    border-radius:20px;
+    border-radius:30px;
 
-    background:rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.10);
 
-    border:1px solid rgba(255,255,255,.16);
+    border:
+        1px solid rgba(255,255,255,.14);
 
     font-size:11px;
+
+    backdrop-filter:blur(10px);
 }
 
 .status-dot{
@@ -205,52 +243,55 @@ body{
     width:7px;
     height:7px;
 
-    flex-shrink:0;
-
     border-radius:50%;
 
-    background:#7df09b;
+    background:#74f19a;
 
-    box-shadow:0 0 10px #7df09b;
+    box-shadow:
+        0 0 0 4px rgba(116,241,154,.10),
+        0 0 12px #74f19a;
 }
 
 
 /* =========================================================
-   CHAT
+   CHAT AREA
 ========================================================= */
 
 .chat{
 
-    flex:1;
+    flex:1 1 auto;
 
     min-height:0;
 
     overflow-y:auto;
     overflow-x:hidden;
 
-    padding:16px 13px 15px;
-
-    scroll-behavior:smooth;
+    padding:
+        16px
+        14px
+        18px;
 
     -webkit-overflow-scrolling:touch;
+
+    scroll-behavior:smooth;
 
     overscroll-behavior:contain;
 }
 
 .chat::-webkit-scrollbar{
-    width:5px;
+    width:3px;
 }
 
 .chat::-webkit-scrollbar-thumb{
 
-    background:#cbd6cc;
+    background:#cbd7cc;
 
-    border-radius:10px;
+    border-radius:20px;
 }
 
 
 /* =========================================================
-   WELCOME
+   WELCOME CARD
 ========================================================= */
 
 .welcome{
@@ -259,77 +300,87 @@ body{
 
     overflow:hidden;
 
+    padding:17px;
+
+    margin-bottom:16px;
+
+    border-radius:22px;
+
     background:
         linear-gradient(
-            135deg,
+            145deg,
             #ffffff,
-            #f3f8f3
+            #f0f7f1
         );
 
-    border:1px solid #dfe8df;
-
-    border-radius:20px;
-
-    padding:16px;
-
-    margin-bottom:13px;
+    border:
+        1px solid #dce7dd;
 
     box-shadow:
-        0 8px 25px rgba(30,60,40,.07);
+        0 8px 28px rgba(30,65,40,.07);
 }
 
-.welcome:before{
+.welcome::after{
 
-    content:"";
+    content:"🌿";
 
     position:absolute;
 
-    width:100px;
-    height:100px;
+    right:15px;
+    top:12px;
 
-    right:-45px;
-    top:-45px;
+    font-size:42px;
 
-    background:#dcebdc;
-
-    border-radius:50%;
+    opacity:.08;
 }
 
-.welcome b{
+.welcome-title{
 
     position:relative;
     z-index:2;
 
     font-size:17px;
+
+    font-weight:800;
+
+    color:#203529;
 }
 
-.welcome p{
+.welcome-text{
 
     position:relative;
     z-index:2;
 
-    font-size:13px;
+    margin-top:7px;
+
+    font-size:12.5px;
 
     line-height:1.6;
 
-    color:#68756c;
+    color:#68766d;
 
-    margin:8px 0 0;
+    padding-right:25px;
 }
 
 
 /* =========================================================
-   MESAJLAR
+   MESSAGE
 ========================================================= */
 
 .msg{
 
     display:flex;
 
-    margin:10px 0;
+    margin:
+        9px 0;
 
     animation:
-        messageIn .25s ease;
+        messageIn .22s ease;
+}
+
+.msg.user{
+
+    justify-content:flex-end;
 }
 
 @keyframes messageIn{
@@ -343,115 +394,133 @@ body{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
-.msg.user{
-    justify-content:flex-end;
+
+/* =========================================================
+   BOT AVATAR
+========================================================= */
+
+.bot-avatar{
+
+    width:30px;
+    height:30px;
+
+    flex:0 0 30px;
+
+    margin-right:7px;
+    margin-top:3px;
+
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dcecdf,
+            #edf6ee
+        );
+
+    border:
+        1px solid #d4e2d5;
 }
+
+
+/* =========================================================
+   BUBBLE
+========================================================= */
 
 .bubble{
 
-    max-width:88%;
+    max-width:
+        min(86%, 390px);
 
-    padding:12px 14px;
+    padding:
+        11px 14px;
 
     border-radius:18px;
 
-    font-size:14px;
+    font-size:13.5px;
 
     line-height:1.55;
 
     white-space:pre-line;
 
-    word-wrap:break-word;
     overflow-wrap:anywhere;
 }
 
 .bot .bubble{
 
-    background:#fff;
+    background:#ffffff;
 
-    border:1px solid #dfe7df;
+    color:#26362c;
 
-    border-bottom-left-radius:5px;
+    border:
+        1px solid #dfe7df;
 
-    color:#26342b;
+    border-bottom-left-radius:6px;
 
     box-shadow:
-        0 5px 15px rgba(0,0,0,.04);
+        0 5px 18px rgba(30,60,40,.05);
 }
 
 .user .bubble{
 
+    color:white;
+
     background:
         linear-gradient(
             135deg,
-            #294a35,
-            #426b4d
+            #244633,
+            #426d4e
         );
 
-    color:#fff;
-
-    border-bottom-right-radius:5px;
+    border-bottom-right-radius:6px;
 
     box-shadow:
-        0 5px 15px rgba(35,68,45,.18);
+        0 6px 18px rgba(35,70,45,.18);
 }
 
 
 /* =========================================================
-   ALT MENYU
+   QUICK SECTION
 ========================================================= */
 
-.menu-link{
+.quick-section{
 
-    display:block;
+    flex:0 0 auto;
 
-    flex-shrink:0;
+    padding:
+        7px 0 8px;
 
-    margin:7px 13px 8px;
+    background:#f7faf7;
 
-    padding:11px;
-
-    border-radius:14px;
-
-    text-align:center;
-
-    text-decoration:none;
-
-    color:#35533e;
-
-    background:#edf5ee;
-
-    border:1px solid #d7e5d8;
-
-    font-size:12px;
-
-    font-weight:700;
+    border-top:
+        1px solid #e4ebe4;
 }
-
-
-/* =========================================================
-   QUICK BUTTONS
-========================================================= */
 
 .quick-title{
 
-    flex-shrink:0;
-
-    padding:5px 13px 3px;
-
-    font-size:11px;
+    padding:
+        0 14px 7px;
 
     color:#7b887f;
 
-    background:#f8faf8;
+    font-size:10px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
 }
 
 .quick{
-
-    flex-shrink:0;
 
     display:flex;
 
@@ -459,9 +528,10 @@ body{
 
     overflow-x:auto;
 
-    padding:7px 11px 10px;
+    padding:
+        0 12px 2px;
 
-    background:#f8faf8;
+    scrollbar-width:none;
 
     -webkit-overflow-scrolling:touch;
 }
@@ -472,181 +542,230 @@ body{
 
 .quick button{
 
-    flex-shrink:0;
+    flex:0 0 auto;
 
-    border:1px solid #d5e0d5;
+    border:
+        1px solid #d9e4da;
 
     background:#fff;
 
-    border-radius:22px;
+    color:#36533f;
 
-    padding:9px 13px;
+    border-radius:30px;
+
+    padding:
+        9px 13px;
+
+    font-size:11.5px;
+
+    font-weight:600;
 
     white-space:nowrap;
 
-    color:#304a37;
+    box-shadow:
+        0 3px 10px rgba(30,60,40,.04);
 
-    cursor:pointer;
-
-    font-size:12px;
-
-    transition:.2s;
+    transition:.15s;
 
     touch-action:manipulation;
 }
 
-.quick button:hover{
-
-    background:#eaf2eb;
-
-    transform:translateY(-1px);
-}
-
 .quick button:active{
 
-    transform:scale(.96);
+    transform:scale(.95);
+
+    background:#edf5ee;
 }
 
 
 /* =========================================================
-   COMPOSER — ƏN VACİB HİSSƏ
+   BOTTOM AREA
 ========================================================= */
 
-.composer{
+.bottom{
+
+    flex:0 0 auto;
+
+    background:
+        rgba(255,255,255,.98);
+
+    border-top:
+        1px solid #dfe7df;
+
+    padding:
+        7px
+        11px
+        calc(
+            8px +
+            env(safe-area-inset-bottom)
+        );
+
+    box-shadow:
+        0 -5px 20px rgba(20,50,30,.05);
+
+    z-index:50;
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.menu-link{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
 
     width:100%;
 
-    flex-shrink:0;
+    min-height:34px;
+
+    margin-bottom:7px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:#35543e;
+
+    background:#edf5ee;
+
+    border:
+        1px solid #d8e6d9;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    touch-action:manipulation;
+}
+
+
+/* =========================================================
+   COMPOSER
+========================================================= */
+
+.composer{
 
     display:flex;
 
     align-items:center;
 
-    gap:8px;
+    gap:7px;
 
-    padding:
-        9px
-        12px
-        calc(12px + env(safe-area-inset-bottom));
-
-    border-top:1px solid #e0e6e0;
-
-    background:
-        rgba(255,255,255,.98);
-
-    position:relative;
-
-    z-index:100;
-
-    /* Klaviatura ilə düzgün işləməsi üçün */
-    transform:translateZ(0);
+    width:100%;
 }
 
 
 /* =========================================================
-   INPUT
+   INPUT BOX
 ========================================================= */
 
-.composer input{
+.input-wrap{
 
     flex:1;
-
-    width:0;
 
     min-width:0;
 
     height:46px;
 
-    border:1px solid #d2ddd3;
+    display:flex;
+
+    align-items:center;
 
     border-radius:25px;
+
+    border:
+        1px solid #d3ded4;
+
+    background:#f8fbf8;
+
+    transition:.2s;
+}
+
+.input-wrap:focus-within{
+
+    border-color:#61816a;
+
+    box-shadow:
+        0 0 0 3px rgba(75,120,85,.08);
+}
+
+.composer input{
+
+    width:100%;
+    min-width:0;
+
+    height:44px;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
 
     padding:
         0 15px;
 
-    outline:none;
+    color:#24342a;
+
+    font-family:inherit;
 
     font-size:16px;
 
-    line-height:46px;
-
-    color:#263329;
-
-    background:#fafcfa;
-
     appearance:none;
     -webkit-appearance:none;
-
-    touch-action:manipulation;
 }
 
 .composer input::placeholder{
 
-    color:#8b968e;
-}
-
-.composer input:focus{
-
-    border-color:#60816a;
-
-    box-shadow:
-        0 0 0 3px rgba(76,117,87,.08);
+    color:#929c94;
 }
 
 
 /* =========================================================
-   GÖNDƏR BUTTONU
+   SEND
 ========================================================= */
 
 .send{
 
     width:46px;
-    min-width:46px;
-
     height:46px;
-    min-height:46px;
 
-    flex:0 0 46px;
+    flex:
+        0 0 46px;
 
     border:0;
 
     border-radius:50%;
 
-    background:
-        linear-gradient(
-            135deg,
-            #284934,
-            #54745b
-        );
-
-    color:#fff;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 5px 15px rgba(35,68,45,.2);
-
-    transition:.2s;
-
     display:flex;
     align-items:center;
     justify-content:center;
 
-    padding:0;
+    color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #234832,
+            #52765b
+        );
+
+    box-shadow:
+        0 7px 18px rgba(35,70,45,.22);
+
+    font-size:18px;
 
     touch-action:manipulation;
-}
 
-.send:hover{
-
-    transform:scale(1.05);
+    transition:.15s;
 }
 
 .send:active{
 
-    transform:scale(.94);
+    transform:scale(.91);
 }
 
 
@@ -660,18 +779,22 @@ body{
 
     right:14px;
 
-    bottom:calc(
-        78px + env(safe-area-inset-bottom)
-    );
+    bottom:
+        calc(
+            115px +
+            env(safe-area-inset-bottom)
+        );
 
-    z-index:90;
+    z-index:40;
 
     display:flex;
+
     align-items:center;
 
-    gap:7px;
+    gap:6px;
 
-    padding:10px 13px 10px 10px;
+    padding:
+        9px 12px 9px 9px;
 
     border-radius:30px;
 
@@ -682,83 +805,38 @@ body{
     background:
         linear-gradient(
             135deg,
-            #16a34a,
+            #159447,
             #22c55e
         );
 
+    font-size:11px;
+
+    font-weight:800;
+
     box-shadow:
-        0 8px 25px rgba(22,163,74,.32);
-
-    font-size:12px;
-
-    font-weight:700;
-
-    animation:
-        whatsappPulse 2.4s infinite;
+        0 8px 25px rgba(22,163,74,.25);
 }
 
 .whatsapp-icon{
 
-    width:27px;
-    height:27px;
-
-    flex-shrink:0;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.18);
+    width:25px;
+    height:25px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:16px;
-}
+    border-radius:50%;
 
-@keyframes whatsappPulse{
+    background:
+        rgba(255,255,255,.18);
 
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.04);
-    }
-
+    font-size:14px;
 }
 
 
 /* =========================================================
-   DESKTOP
-========================================================= */
-
-@media(min-width:600px){
-
-    body{
-        padding:20px;
-    }
-
-    .app{
-
-        height:
-            calc(100vh - 40px);
-
-        height:
-            calc(100dvh - 40px);
-
-        border-radius:25px;
-
-        overflow:hidden;
-
-        box-shadow:
-            0 15px 50px rgba(20,50,30,.18);
-    }
-
-}
-
-
-/* =========================================================
-   KİÇİK TELEFONLAR
+   SMALL PHONES
 ========================================================= */
 
 @media(max-width:380px){
@@ -769,14 +847,12 @@ body{
         padding-right:13px;
     }
 
-    .logo-circle{
+    .logo{
 
-        width:40px;
-        height:40px;
+        width:43px;
+        height:43px;
 
-        border-radius:13px;
-
-        font-size:19px;
+        flex-basis:43px;
     }
 
     .brand{
@@ -789,38 +865,36 @@ body{
         font-size:10px;
     }
 
-    .ai-status{
-
-        font-size:10px;
-
-        margin-top:9px;
-    }
-
     .chat{
 
         padding:
-            11px 9px 12px;
+            12px 10px 15px;
+    }
+
+    .welcome{
+
+        padding:14px;
+
+        border-radius:19px;
+    }
+
+    .welcome-title{
+
+        font-size:15px;
     }
 
     .bubble{
 
-        max-width:93%;
-
         font-size:13px;
 
-        padding:11px 12px;
+        max-width:90%;
     }
 
     .menu-link{
 
-        margin:
-            5px 9px 6px;
-    }
+        min-height:32px;
 
-    .quick{
-
-        padding:
-            6px 8px 8px;
+        font-size:10.5px;
     }
 
     .quick button{
@@ -828,57 +902,21 @@ body{
         font-size:11px;
 
         padding:
-            8px 10px;
-    }
-
-    .composer{
-
-        gap:6px;
-
-        padding-left:8px;
-        padding-right:8px;
-    }
-
-    .composer input{
-
-        height:44px;
-
-        font-size:16px;
-
-        padding-left:13px;
-        padding-right:13px;
+            8px 11px;
     }
 
     .send{
 
         width:44px;
-        min-width:44px;
-
         height:44px;
-        min-height:44px;
 
         flex-basis:44px;
     }
-
-    .whatsapp{
-
-        right:8px;
-
-        bottom:
-            calc(
-                72px +
-                env(safe-area-inset-bottom)
-            );
-
-        padding:
-            8px 10px 8px 8px;
-    }
-
 }
 
 
 /* =========================================================
-   ÇOX KİÇİK TELEFONLAR
+   VERY SHORT SCREEN
 ========================================================= */
 
 @media(max-height:650px){
@@ -887,155 +925,118 @@ body{
 
         padding-top:
             calc(
-                10px +
+                9px +
                 env(safe-area-inset-top)
             );
 
-        padding-bottom:10px;
+        padding-bottom:9px;
     }
 
-    .logo-circle{
+    .logo{
 
-        width:38px;
-        height:38px;
+        width:40px;
+        height:40px;
+
+        flex-basis:40px;
     }
 
     .ai-status{
 
         margin-top:7px;
 
-        padding:5px 9px;
+        padding:4px 9px;
     }
 
     .welcome{
 
-        padding:13px;
+        padding:12px;
 
-        margin-bottom:9px;
+        margin-bottom:10px;
     }
 
-    .welcome p{
+    .welcome-text{
 
-        margin-top:5px;
-
-        line-height:1.45;
+        line-height:1.4;
     }
 
-    .chat{
+    .quick-section{
 
-        padding-top:10px;
+        padding-top:4px;
+        padding-bottom:5px;
+    }
+
+    .bottom{
+
+        padding-top:5px;
     }
 
     .menu-link{
 
-        padding:8px;
+        min-height:30px;
 
-        margin-top:4px;
-        margin-bottom:4px;
+        margin-bottom:5px;
     }
-
-    .quick-title{
-
-        padding-top:3px;
-    }
-
-    .quick{
-
-        padding-top:4px;
-        padding-bottom:6px;
-    }
-
 }
 
 
 /* =========================================================
-   KLAVİATURA AÇIQ OLANDA
+   KEYBOARD OPEN
 ========================================================= */
 
-.keyboard-open .header{
+/*
+   Klaviatura açıldıqda:
+   - WhatsApp gizlənir
+   - quick düymələr gizlənir
+   - menu gizlənir
+   - input və send görünür
+   - heç bir zoom yoxdur
+*/
 
-    /* Klaviatura açıldıqda header bir az yığılır */
-    padding-top:
-        calc(
-            8px +
-            env(safe-area-inset-top)
-        );
-
-    padding-bottom:8px;
-}
-
-.keyboard-open .logo-circle{
-
-    width:36px;
-    height:36px;
-
-    border-radius:11px;
-
-    font-size:17px;
-}
-
-.keyboard-open .brand{
-
-    font-size:16px;
-}
-
-.keyboard-open .sub{
-
-    font-size:10px;
-}
-
-.keyboard-open .ai-status{
-
-    margin-top:5px;
-
-    padding:4px 8px;
-}
-
-.keyboard-open .menu-link{
+body.keyboard-open .quick-section{
 
     display:none;
 }
 
-.keyboard-open .quick-title{
+body.keyboard-open .menu-link{
 
     display:none;
 }
 
-.keyboard-open .quick{
+body.keyboard-open .whatsapp{
 
     display:none;
 }
 
-.keyboard-open .whatsapp{
-
-    display:none;
-}
-
-.keyboard-open .composer{
+body.keyboard-open .bottom{
 
     padding-top:6px;
-    padding-bottom:6px;
 }
 
 
 /* =========================================================
-   TOUCH CİHAZLAR
+   DESKTOP
 ========================================================= */
 
-@media (hover:none){
+@media(min-width:600px){
 
-    .quick button:hover{
+    body{
 
-        background:#fff;
-
-        transform:none;
+        padding:20px;
     }
 
-    .send:hover{
+    .app{
 
-        transform:none;
+        height:
+            calc(100vh - 40px);
+
+        height:
+            calc(100dvh - 40px);
+
+        border-radius:26px;
+
+        box-shadow:
+            0 20px 60px rgba(20,50,30,.18);
     }
-
 }
 
 </style>
@@ -1057,7 +1058,7 @@ body{
 
     <div class="header-top">
 
-        <div class="logo-circle">
+        <div class="logo">
             🌿
         </div>
 
@@ -1097,21 +1098,24 @@ body{
 
     <div class="welcome">
 
-        <b>
-            Salam! My Way Village-ə xoş gəlmisiniz 👋
-        </b>
+        <div class="welcome-title">
+            My Way Village-ə xoş gəlmisiniz 👋
+        </div>
 
-        <p>
-            Siz AI Tural ilə yazışırsınız.
-            Kotteclər, qiymətlər, SPA, restoran,
-            rezervasiya və digər xidmətlər haqqında
-            suallarınızı yaza bilərsiniz.
-        </p>
+        <div class="welcome-text">
+            Mən AI Turalam. Kotteclər, qiymətlər,
+            SPA, restoran, rezervasiya və digər
+            xidmətlər haqqında sizə məlumat verə bilərəm.
+        </div>
 
     </div>
 
 
     <div class="msg bot">
+
+        <div class="bot-avatar">
+            🤖
+        </div>
 
         <div class="bubble">
             Sizə necə kömək edə bilərəm? 😊
@@ -1125,78 +1129,116 @@ body{
 
 
 <!-- =====================================================
-     MENYU
+     QUICK + BOTTOM
 ===================================================== -->
 
-<a
-    class="menu-link"
-    href="https://tural-98.github.io/Hotelmenum/"
-    target="_blank"
-    rel="noopener"
->
-    🍽️ Otel menyusuna bax
-</a>
+<div class="quick-section">
+
+    <div class="quick-title">
+        Tez-tez soruşulanlar
+    </div>
+
+    <div class="quick">
+
+        <button onclick="ask('Ümumi məlumat')">
+            🏡 Ümumi
+        </button>
+
+        <button onclick="ask('Qiymətlər')">
+            💰 Qiymətlər
+        </button>
+
+        <button onclick="ask('Standart Kottec')">
+            🏡 Standart
+        </button>
+
+        <button onclick="ask('Duplex Kottec')">
+            🏠 Duplex
+        </button>
+
+        <button onclick="ask('VIP')">
+            ⭐ VIP
+        </button>
+
+        <button onclick="ask('Ovçu Evi')">
+            🌲 Ovçu Evi
+        </button>
+
+        <button onclick="ask('SPA')">
+            🧖 SPA
+        </button>
+
+        <button onclick="ask('Restoran')">
+            🍽️ Restoran
+        </button>
+
+        <button onclick="ask('Ocaq Başı')">
+            🔥 Ocaq Başı
+        </button>
+
+        <button onclick="ask('Rezervasiya')">
+            📅 Rezervasiya
+        </button>
+
+        <button onclick="ask('Giriş və çıxış saatları')">
+            🕐 Giriş / Çıxış
+        </button>
+
+        <button onclick="ask('15 faiz endirim')">
+            🎁 Endirim
+        </button>
+
+    </div>
+
+</div>
 
 
 
 <!-- =====================================================
-     QUICK BUTTONS
+     BOTTOM
 ===================================================== -->
 
-<div class="quick-title">
-    Tez-tez soruşulanlar
-</div>
+<div class="bottom">
 
 
-<div class="quick">
+    <a
+        class="menu-link"
+        href="https://tural-98.github.io/Hotelmenum/"
+        target="_blank"
+        rel="noopener"
+    >
+        🍽️ Otel menyusuna bax
+    </a>
 
-    <button onclick="ask('Ümumi məlumat')">
-        🏡 Ümumi məlumat
-    </button>
 
-    <button onclick="ask('Qiymətlər')">
-        💰 Qiymətlər
-    </button>
+    <form
+        class="composer"
+        id="composer"
+    >
 
-    <button onclick="ask('Standart Kottec')">
-        🏡 Standart
-    </button>
+        <div class="input-wrap">
 
-    <button onclick="ask('Duplex Kottec')">
-        🏠 Duplex
-    </button>
+            <input
+                id="input"
+                type="text"
+                inputmode="text"
+                autocomplete="off"
+                enterkeyhint="send"
+                placeholder="Sualınızı yazın..."
+            >
 
-    <button onclick="ask('VIP')">
-        ⭐ VIP
-    </button>
+        </div>
 
-    <button onclick="ask('Ovçu Evi')">
-        🌲 Ovçu Evi
-    </button>
 
-    <button onclick="ask('SPA')">
-        🧖 SPA
-    </button>
+        <button
+            class="send"
+            type="submit"
+            aria-label="Göndər"
+        >
+            ➤
+        </button>
 
-    <button onclick="ask('Restoran')">
-        🍽️ Restoran
-    </button>
-
-    <button onclick="ask('Ocaq Başı')">
-        🔥 Ocaq Başı
-    </button>
-
-    <button onclick="ask('Rezervasiya necə edilir?')">
-        📅 Rezervasiya
-    </button>
-
-    <button onclick="ask('Giriş və çıxış saatları')">
-        🕐 Giriş / Çıxış
-    </button>
-
-    <button onclick="ask('15 faiz endirim')">
-        🎁 Endirim
-    </button>
+    </form>
 
 </div>
 
@@ -1222,35 +1264,6 @@ body{
 </a>
 
 
-
-<!-- =====================================================
-     INPUT
-===================================================== -->
-
-<form
-    class="composer"
-    id="composer"
->
-
-    <input
-        id="input"
-        type="text"
-        placeholder="Sualınızı yazın..."
-        autocomplete="off"
-        enterkeyhint="send"
-    >
-
-    <button
-        class="send"
-        type="submit"
-        aria-label="Göndər"
-    >
-        ➤
-    </button>
-
-</form>
-
-
 </div>
 
 
@@ -1259,12 +1272,12 @@ body{
 
 
 /* =========================================================
-   MY WAY VILLAGE MƏLUMAT BAZASI
+   DATA
 ========================================================= */
 
 const data = {
 
-standard: `🏡 STANDART KOTTECLƏR
+standard:`🏡 STANDART KOTTECLƏR
 
 Ümumi sahə: 48 m²
 Tutum: 2 nəfər
@@ -1277,7 +1290,7 @@ Tərkibi və imkanları:
 • Geniş yataq otağı
 • Ayaqyolu və hamam
 • Balkon
-• Balkonda masa və istirahət üçün oturacaq dəsti
+• Balkonda masa və oturacaq dəsti
 • Soyuducu
 • Televizor
 • Tefal çaydan
@@ -1290,7 +1303,8 @@ Tərkibi və imkanları:
 • İsti döşəmə
 • Kondisioner`,
 
-duplex: `🏠 DUPLEX KOTTECLƏR
+
+duplex:`🏠 DUPLEX KOTTECLƏR
 
 Ümumi sahə: 50 m²
 Tutum: 2 nəfər
@@ -1298,48 +1312,16 @@ Qiymət: 250 AZN
 
 Qiymətə 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
-Tərkibi və imkanları:
-
-• Geniş yataq otağı
-• Ayaqyolu və hamam
-• Balkon
-• Balkonda masa və istirahət üçün oturacaq dəsti
-• Soyuducu
-• Televizor
-• Tefal çaydan
-• Çay, kofe və su
-• Fen
-• Dəsmal və xalatlar
-• Diş dəsti
-• Sabun, şampun, duş geli
-• İsti/soyuq su
-• İsti döşəmə
-• Kondisioner
-
 1-ci mərtəbə:
 • Oturma sahəsi
 
 2-ci mərtəbə:
 • Yataq otağı
-• Balkon`,
-
-vip1: `⭐ VIP KOTTEC — TİP 1
-
-Ümumi sahə: 50 m²
-Tutum: 4 nəfər
-Qiymət: 350 AZN
-
-Qiymətə 4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
-
-Tərkibi:
-
-• 2 yataq otağı
-• Hər iki otağın ayrı-ayrı hamam və tualeti
-• Geniş oturma sahəsi
-• Mini-bar
-• Kiçik mətbəx
 • Balkon
-• Balkonda masa və istirahət üçün oturacaq dəsti
+
+Əlavə imkanlar:
+
+• Hamam
 • Soyuducu
 • Televizor
 • Tefal çaydan
@@ -1352,17 +1334,43 @@ Tərkibi:
 • İsti döşəmə
 • Kondisioner`,
 
-vip2: `⭐ VIP KOTTEC — TİP 2
 
-2 ədəd mövcuddur
+vip1:`⭐ VIP KOTTEC — TİP 1
 
-Mərtəbələr: 2 mərtəbəli
+Ümumi sahə: 50 m²
 Tutum: 4 nəfər
 Qiymət: 350 AZN
 
-Qiymətə 2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Qiymətə 4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
 
-Plan:
+• 2 yataq otağı
+• Hər iki otağın ayrıca hamam və tualeti
+• Geniş oturma sahəsi
+• Mini-bar
+• Kiçik mətbəx
+• Balkon
+• Soyuducu
+• Televizor
+• Tefal çaydan
+• Çay, kofe və su
+• Fen
+• Dəsmal və xalatlar
+• Diş dəsti
+• Sabun, şampun, duş geli
+• İsti/soyuq su
+• İsti döşəmə
+• Kondisioner`,
+
+
+vip2:`⭐ VIP KOTTEC — TİP 2
+
+2 ədəd mövcuddur.
+
+2 mərtəbəli
+4 nəfər
+350 AZN
+
+Qiymətə səhər yeməyi + sauna + hovuz daxildir.
 
 1-ci mərtəbə:
 • Oturma sahəsi
@@ -1370,24 +1378,37 @@ Plan:
 2-ci mərtəbə:
 • 2 yataq otağı
 
-Bir kottecdə otaqlar bir-birindən tam ayrıdır.
+Kotteclərdən birində otaqlar tam ayrı,
+digərində isə daxili keçidlə bağlıdır.
 
-Digər kottecdə otaqlar daxili keçidlə bağlıdır.
+Bəzi kotteclərdə jacuzzi mövcuddur.
 
-Hamamlar:
+🌲 Dağ mənzərəli jacuzzi variantı da mövcuddur.`,
 
-• Bir kottecdə hər iki hamamda jacuzzi mövcuddur.
-• Digərində dağ mənzərəli jacuzzi mövcuddur.`,
 
-hunter: `🌲 OVÇU EVİ
+hunter:`🌲 OVÇU EVİ
 
 Ümumi sahə: 30 m²
 Tutum: 2 nəfər
 Qiymət: 200 AZN
 
-Qiymətə 2 nəfərlik səhər yeməyi + sauna daxildir.`,
+Qiymətə 2 nəfərlik səhər yeməyi + sauna daxildir.
 
-spa: `🧖 SPA MƏRKƏZİ
+• Yataq otağı
+• Hamam və tualet
+• Balkon
+• Soyuducu
+• Televizor
+• Tefal çaydan
+• Çay, kofe və su
+• Fen
+• Dəsmal və xalat
+• İsti/soyuq su
+• İsti döşəmə
+• Kondisioner`,
+
+
+spa:`🧖 SPA MƏRKƏZİ
 
 1-ci mərtəbə:
 
@@ -1400,9 +1421,10 @@ spa: `🧖 SPA MƏRKƏZİ
 
 • Masaj otaqları
 • Rahat oturma sahəsi
-• İçki içmək və dincəlmək üçün xüsusi zona`,
+• Xüsusi istirahət zonası`,
 
-restaurant: `🍽️ MY WAY VILLAGE RESTORANI
+
+restaurant:`🍽️ MY WAY VILLAGE RESTORANI
 
 Restoranımızda:
 
@@ -1415,39 +1437,47 @@ Restoranımızda:
 • Quzu yeməkləri
 • Digər milli təamlar
 
-təqdim olunur.`,
+təqdim olunur.
 
-bbq: `🔥 OCAQ BAŞI — BARBEKÜ ZONASI
+🍽️ Tam menyuya baxmaq üçün
+"Otel menyusuna bax" düyməsindən istifadə edə bilərsiniz.`,
 
-Qonaqlar üçün xüsusi ayrılmış "Ocaq Başı" ərazimiz mövcuddur.
+
+bbq:`🔥 OCAQ BAŞI
+
+Qonaqlar üçün xüsusi Ocaq Başı zonamız mövcuddur.
 
 Burada:
 
-• Qonaqlar dostları ilə birlikdə ocaq qalayıb istirahət edə bilirlər.
-• Restorandan çay və digər içkilər sifariş etmək mümkündür.
-• Kebab və digər ətlər qonaqlar tərəfindən özləri bişirilə bilər.
-• Lazım olan şiş, qab-qacaq və digər vasitələri restorandan götürmək mümkündür.`,
+• Ocaq qalayıb istirahət etmək
+• Restorandan çay və içkilər sifariş etmək
+• Kebab və digər ətləri özünüz bişirmək
+• Şiş və qab-qacaq əldə etmək mümkündür.
 
-checkin: `🕐 GİRİŞ VƏ ÇIXIŞ SAATLARI
+Ailə və dost qrupları üçün rahat istirahət məkanıdır.`,
 
-Giriş (Check-in):
+
+checkin:`🕐 GİRİŞ VƏ ÇIXIŞ
+
+Check-in:
 14:00
 
-Çıxış (Check-out):
+Check-out:
 12:00
 
-Qonaq gün ərzində daha gec saatda daxil olsa belə,
+Gec saatda daxil olsanız belə,
 çıxış vaxtı 12:00 olaraq qalır.`,
 
-reservation: `📅 REZERVASİYA
 
-Rezervasiya etmək üçün:
+reservation:`📅 REZERVASİYA
+
+Rezervasiya üçün:
 
 📞 +994 50 309 93 92
 
-nömrəsi ilə zəhmət olmasa əlaqə saxlayın.
+WhatsApp və ya telefonla əlaqə saxlaya bilərsiniz.
 
-Rezervasiyanı qeyd etmək üçün:
+Rezervasiya üçün:
 
 • Ad
 • Soyad
@@ -1456,71 +1486,84 @@ Rezervasiyanı qeyd etmək üçün:
 
 qeyd olunmalıdır.`,
 
-discount: `🎁 15% ENDİRİM
+
+discount:`🎁 15% ENDİRİM
 
 Hal-hazırda ayın sonuna kimi 15% endirim mövcuddur.
 
-⚠️ Endirim xüsusi günlərdə və bayram günlərində nəzərə alınmır.`,
+⚠️ Xüsusi və bayram günlərində endirim nəzərə alınmır.
 
-extra: `👤 EXTRA BED / ƏLAVƏ ŞƏXS
+Konkret kottecin endirimli qiymətini hesablamaq üçün tarix və kottec növünü yaza bilərsiniz.`,
 
-5 yaşdan yuxarı 1 əlavə şəxs üçün:
 
-+20 AZN
+extra:`👤 ƏLAVƏ ŞƏXS
 
-2 nəfərlik otaqda 3-cü şəxs 5 yaşdan yuxarıdırsa:
-+20 AZN əlavə olunur.
+5 yaşdan yuxarı əlavə şəxs:
 
-Əlavə şəxslər üçün:
-+20 AZN / nəfər.`,
++20 AZN / nəfər
 
-contact: `📞 ƏLAQƏ
+Əlavə şəxslərin sayı və yerləşdirilməsi kottecin tutumuna görə dəqiqləşdirilir.`,
+
+
+contact:`📞 ƏLAQƏ
 
 My Way Village & Spa
 
 Telefon / WhatsApp:
+
 +994 50 309 93 92`,
 
-instagram: `📱 INSTAGRAM
+
+instagram:`📱 INSTAGRAM
 
 Instagram:
-mywayvillage.az`,
 
-youtube: `▶️ YOUTUBE
+mywayvillage.az
+
+Yeni paylaşımlar və yeniliklər üçün bizi izləyə bilərsiniz.`,
+
+
+youtube:`▶️ YOUTUBE
 
 YouTube səhifəmizdə videolarımız
 "My Way Village & Spa"
 adı ilə yayımlanır.`,
 
-booking: `📅 BOOKING
 
-Otelimizdə rezervasiya üçün Booking səhifəmizdən istifadə edə bilərsiniz.
+booking:`📅 BOOKING
 
-Axtarış sistemində:
-
-"My Way Village Hotel & Spa"
-
-adını qeyd etdikdə otelimizin Booking səhifəsi görünəcək.`,
-
-location: `📍 OTELİN KONUMU
-
-Otelimizin konumunu Google Maps və ya Waze proqramında görə bilərsiniz.
-
-Axtarış bölməsinə:
+Booking-də:
 
 "My Way Village Hotel & Spa"
 
-yazaraq otelimizi tapa bilərsiniz.
+adını axtararaq otelimizi tapa bilərsiniz.`,
+
+
+location:`📍 KONUM
 
 Ünvan:
-Çayqovuşan kəndi, İsmayıllı rayonu.`,
 
-ai: `🤖 SİZ AI TURAL İLƏ YAZIŞIRSINIZ
+Çayqovuşan kəndi,
+İsmayıllı rayonu.
 
-Mən My Way Village & Spa haqqında hazır məlumat bazasında olan suallara cavab verirəm.
+Google Maps və Waze-də:
 
-Əgər sualınız məlumat bazasında yoxdursa,
-sizi komandamıza yönləndirəcəyəm.
+"My Way Village Hotel & Spa"
+
+yazaraq bizi tapa bilərsiniz.`,
+
+
+ai:`🤖 AI TURAL
+
+Siz My Way Village & Spa-nın
+AI Tural sistemi ilə yazışırsınız.
+
+Mən kotteclər, qiymətlər,
+SPA, restoran, rezervasiya və
+digər xidmətlər haqqında məlumat verə bilərəm.
+
+Məlumat bazasında olmayan sualınız olarsa,
+komandamızla əlaqə saxlaya bilərsiniz.
 
 📞 +994 50 309 93 92`
 
@@ -1528,7 +1571,7 @@ sizi komandamıza yönləndirəcəyəm.
 
 
 /* =========================================================
-   NORMALİZASİYA
+   NORMALIZE
 ========================================================= */
 
 function normalizeText(text){
@@ -1548,98 +1591,55 @@ function normalizeText(text){
 
 
 /* =========================================================
-   MESAJ ƏLAVƏ ET
-========================================================= */
-
-function add(text,who="bot"){
-
-    const wrap=document.createElement("div");
-
-    wrap.className="msg "+who;
-
-    const bubble=document.createElement("div");
-
-    bubble.className="bubble";
-
-    bubble.textContent=text;
-
-    wrap.appendChild(bubble);
-
-    document.getElementById("chat").appendChild(wrap);
-
-    scrollChat();
-
-}
-
-
-/* =========================================================
-   CHAT SCROLL
-========================================================= */
-
-function scrollChat(){
-
-    const chat=document.getElementById("chat");
-
-    requestAnimationFrame(function(){
-
-        chat.scrollTop=chat.scrollHeight;
-
-    });
-
-}
-
-
-/* =========================================================
-   QİYMƏTLƏR
+   ALL PRICES
 ========================================================= */
 
 function allPrices(){
 
 return `🏡 MY WAY VILLAGE & SPA
 
-KOTTEC VƏ OTAQ QİYMƏTLƏRİ
+KOTTEC QİYMƏTLƏRİ
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
-🏡 STANDART KOTTEC
+🏡 STANDART
 
 48 m²
 2 nəfər
 250 AZN
 
-2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Səhər yeməyi + sauna + hovuz
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
-🏠 DUPLEX KOTTEC
+🏠 DUPLEX
 
 50 m²
 2 nəfər
 250 AZN
 
-2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Səhər yeməyi + sauna + hovuz
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
-⭐ VIP KOTTEC — TİP 1
+⭐ VIP TİP 1
 
 50 m²
 4 nəfər
 350 AZN
 
-4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Səhər yeməyi + sauna + hovuz
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
-⭐ VIP KOTTEC — TİP 2
+⭐ VIP TİP 2
 
-2 ədəd
 4 nəfər
 350 AZN
 
-2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Səhər yeməyi + sauna + hovuz
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
 🌲 OVÇU EVİ
 
@@ -1647,26 +1647,28 @@ KOTTEC VƏ OTAQ QİYMƏTLƏRİ
 2 nəfər
 200 AZN
 
-2 nəfərlik səhər yeməyi + sauna daxildir.
+Səhər yeməyi + sauna
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
 👤 ƏLAVƏ ŞƏXS
 
 5 yaşdan yuxarı:
-+20 AZN / nəfər
++20 AZN
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━
 
-🎁 HAL-HAZIRDA
+🎁 ENDİRİM
 
-Ayın sonuna kimi 15% endirim mövcuddur.`;
+Ayın sonuna kimi 15% endirim mövcuddur.
+
+Xüsusi və bayram günləri istisnadır.`;
 
 }
 
 
 /* =========================================================
-   CAVAB SİSTEMİ
+   ANSWER
 ========================================================= */
 
 function answer(question){
@@ -1676,8 +1678,7 @@ function answer(question){
 
     if(
         x==="salam" ||
-        x.startsWith("salam ") ||
-        x.includes("salam,")
+        x.startsWith("salam ")
     ){
 
         return "Salam! 👋 My Way Village & Spa-ya xoş gəlmisiniz. Sizə necə kömək edə bilərəm?";
@@ -1686,8 +1687,7 @@ function answer(question){
 
 
     if(
-        x.includes("axsaminiz xeyir") ||
-        x.includes("axsaminiz xeyirli")
+        x.includes("axsaminiz xeyir")
     ){
 
         return "Axşamınız xeyir! 🌙 Sizə necə kömək edə bilərəm?";
@@ -1696,8 +1696,7 @@ function answer(question){
 
 
     if(
-        x.includes("sabahiniz xeyir") ||
-        x.includes("sabahiniz xeyirli")
+        x.includes("sabahiniz xeyir")
     ){
 
         return "Sabahınız xeyir! ☀️ Sizə necə kömək edə bilərəm?";
@@ -1718,22 +1717,11 @@ function answer(question){
 
 
     if(
-        x.includes("umumi melumat") ||
-        x.includes("butun otaglar") ||
-        x.includes("butun otaqlar") ||
-        x.includes("butun kottecler") ||
-        x.includes("butun qiymetler") ||
-        x.includes("otaq qiymetleri") ||
-        x.includes("otaqlarin qiymetleri") ||
-        x.includes("kottec qiymetleri") ||
-        x.includes("kotteclerin qiymetleri") ||
-        x.includes("ne qederdir") ||
-        x==="qiymetler" ||
-        x==="qiymet" ||
-        x==="otaqlar" ||
-        x==="kottecler" ||
-        x==="otaq" ||
-        x==="kottec"
+        x.includes("qiymet") ||
+        x.includes("qiymetler") ||
+        x.includes("ne qeder") ||
+        x.includes("kottecler") ||
+        x.includes("otaqlar")
     ){
 
         return allPrices();
@@ -1741,12 +1729,7 @@ function answer(question){
     }
 
 
-    if(
-        x.includes("standart") ||
-        x.includes("standart kottec") ||
-        x.includes("standart otaq") ||
-        x.includes("standartin qiymeti")
-    ){
+    if(x.includes("standart")){
 
         return data.standard;
 
@@ -1755,9 +1738,7 @@ function answer(question){
 
     if(
         x.includes("duplex") ||
-        x.includes("dupleks") ||
-        x.includes("duplex kottec") ||
-        x.includes("duplex otaq")
+        x.includes("dupleks")
     ){
 
         return data.duplex;
@@ -1766,53 +1747,8 @@ function answer(question){
 
 
     if(
-        x.includes("twin") ||
-        x.includes("twinn") ||
-        x.includes("ayri carpayi") ||
-        x.includes("iki ayri carpayi") ||
-        x.includes("iki carpayi")
-    ){
-
-        return `🛏️ TWIN ÇARPAYI
-
-Otelimizdə 10 Duplex kottecdən:
-
-• 6 ədəd Twin — ayrı çarpayılı
-• 4 ədəd Double / DBL — bir böyük çarpayılı
-
-Twin və ya Double/DBL seçimində konkret mövcudluğu rezervasiya zamanı komandamızla dəqiqləşdirə bilərsiniz.
-
-📞 +994 50 309 93 92`;
-
-    }
-
-
-    if(
-        x.includes("double") ||
-        x.includes("dbl") ||
-        x.includes("boyuk carpayi") ||
-        x.includes("bir boyuk carpayi")
-    ){
-
-        return `🛏️ DOUBLE / DBL ÇARPAYI
-
-Otelimizdə 10 Duplex kottecdən:
-
-• 4 ədəd Double / DBL — bir böyük çarpayılı
-• 6 ədəd Twin — ayrı çarpayılı
-
-Konkret mövcudluğu rezervasiya zamanı dəqiqləşdirə bilərsiniz.
-
-📞 +994 50 309 93 92`;
-
-    }
-
-
-    if(
         x.includes("vip tip 1") ||
-        x.includes("vip 1") ||
-        x.includes("vip tip bir") ||
-        x.includes("vip bir")
+        x.includes("vip 1")
     ){
 
         return data.vip1;
@@ -1823,13 +1759,9 @@ Konkret mövcudluğu rezervasiya zamanı dəqiqləşdirə bilərsiniz.
     if(
         x.includes("vip tip 2") ||
         x.includes("vip 2") ||
-        x.includes("vip tip iki") ||
-        x.includes("vip iki") ||
         x.includes("jacuzzi") ||
-        x.includes("cakkuzi") ||
-        x.includes("cakuzi") ||
         x.includes("jakuzzi") ||
-        x.includes("jakuzili")
+        x.includes("jakuz")
     ){
 
         return data.vip2;
@@ -1837,40 +1769,34 @@ Konkret mövcudluğu rezervasiya zamanı dəqiqləşdirə bilərsiniz.
     }
 
 
-    if(
-        x==="vip" ||
-        x==="vip kottec" ||
-        x==="vip kottecler" ||
-        x==="vip kottec qiymeti"
-    ){
+    if(x==="vip"){
 
         return `⭐ VIP KOTTECLƏR
-
-Bizdə VIP kotteclərin əsasən 2 tipi mövcuddur:
 
 1️⃣ VIP Tip 1
 50 m²
 4 nəfər
 350 AZN
 
-4 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
-
 2️⃣ VIP Tip 2
-2 ədəd
 4 nəfər
 350 AZN
 
-2 nəfərlik səhər yeməyi + sauna + hovuz daxildir.
+Hər iki variant haqqında ətraflı məlumat üçün:
 
-İstəsəniz "VIP Tip 1" və ya "VIP Tip 2" yazaraq ətraflı məlumat əldə edə bilərsiniz.`;
+"VIP Tip 1"
+
+və ya
+
+"VIP Tip 2"
+
+yaza bilərsiniz.`;
 
     }
 
 
     if(
-        x.includes("ovcu evi") ||
-        x==="ovcu" ||
-        x.includes("ovcu kottec")
+        x.includes("ovcu")
     ){
 
         return data.hunter;
@@ -1879,118 +1805,10 @@ Bizdə VIP kotteclərin əsasən 2 tipi mövcuddur:
 
 
     if(
-        x.includes("nece kottec var") ||
-        x.includes("ne qeder kottec var") ||
-        x.includes("otelde nece kottec var") ||
-        x.includes("kottec sayi") ||
-        x.includes("otaq sayi")
-    ){
-
-        return `🏡 MY WAY VILLAGE — ÜMUMİ MƏLUMAT
-
-Otelimizdə ümumilikdə 18 kottec mövcuddur.
-
-• 4 Standart kottec
-• 10 Duplex kottec
-• 4 nəfərlik kotteclər
-
-Konkret kottecin mövcudluğu üçün:
-
-📞 +994 50 309 93 92`;
-
-    }
-
-
-    if(
-        x.includes("giris") ||
-        x.includes("cixis") ||
-        x.includes("check in") ||
-        x.includes("check out") ||
-        x.includes("saat neceden") ||
-        x.includes("saat necede") ||
-        x.includes("ne vaxt daxil") ||
-        x.includes("ne vaxt cix")
-    ){
-
-        return data.checkin;
-
-    }
-
-
-    if(
-        x.includes("bugun gelsek") ||
-        x.includes("12") ||
-        x.includes("gec girsek") ||
-        x.includes("gec daxil olsaq") ||
-        x.includes("girsek ne vaxt cixiriq")
-    ){
-
-        return data.checkin;
-
-    }
-
-
-    if(
-        x.includes("rezervasiya") ||
-        x.includes("rezerv") ||
-        x.includes("bron") ||
-        x.includes("nece rezervasiya") ||
-        x.includes("rezervasiyani nece") ||
-        x.includes("otaq bron")
-    ){
-
-        return data.reservation;
-
-    }
-
-
-    if(
-        x.includes("booking") ||
-        x.includes("bookingden") ||
-        x.includes("bookingden rezerv")
-    ){
-
-        return data.booking;
-
-    }
-
-
-    if(
-        x.includes("extra") ||
-        x.includes("extra bed") ||
-        x.includes("elave sexs") ||
-        x.includes("elave nefer") ||
-        x.includes("5 yas") ||
-        x.includes("5 yasdan") ||
-        x.includes("usaq") ||
-        x.includes("3 nefer") ||
-        x.includes("4 nefer") ||
-        x.includes("5 nefer")
-    ){
-
-        return data.extra;
-
-    }
-
-
-    if(
-        x.includes("endirim") ||
-        x.includes("15 faiz") ||
-        x.includes("15%") ||
-        x.includes("kampaniya")
-    ){
-
-        return data.discount;
-
-    }
-
-
-    if(
         x.includes("spa") ||
         x.includes("sauna") ||
         x.includes("buxar") ||
-        x.includes("masaj") ||
-        x.includes("kundle")
+        x.includes("masaj")
     ){
 
         return data.spa;
@@ -2000,13 +1818,10 @@ Konkret kottecin mövcudluğu üçün:
 
     if(
         x.includes("restoran") ||
-        x.includes("yemek") ||
-        x.includes("yemekler") ||
         x.includes("menyu") ||
+        x.includes("yemek") ||
         x.includes("kabab") ||
-        x.includes("piti") ||
-        x.includes("quzu") ||
-        x.includes("sirniyyat")
+        x.includes("piti")
     ){
 
         return data.restaurant;
@@ -2015,14 +1830,56 @@ Konkret kottecin mövcudluğu üçün:
 
 
     if(
-        x.includes("ocaq basi") ||
         x.includes("ocaq") ||
-        x.includes("barbeku") ||
-        x.includes("barbeku zonasi") ||
-        x.includes("kebab bisirmek")
+        x.includes("barbeku")
     ){
 
         return data.bbq;
+
+    }
+
+
+    if(
+        x.includes("rezerv") ||
+        x.includes("bron")
+    ){
+
+        return data.reservation;
+
+    }
+
+
+    if(
+        x.includes("giris") ||
+        x.includes("cixis") ||
+        x.includes("check in") ||
+        x.includes("check out")
+    ){
+
+        return data.checkin;
+
+    }
+
+
+    if(
+        x.includes("endirim") ||
+        x.includes("15 faiz") ||
+        x.includes("kampaniya")
+    ){
+
+        return data.discount;
+
+    }
+
+
+    if(
+        x.includes("extra") ||
+        x.includes("elave sexs") ||
+        x.includes("elave nefer") ||
+        x.includes("usaq")
+    ){
+
+        return data.extra;
 
     }
 
@@ -2047,15 +1904,20 @@ Konkret kottecin mövcudluğu üçün:
     }
 
 
+    if(x.includes("booking")){
+
+        return data.booking;
+
+    }
+
+
     if(
         x.includes("konum") ||
-        x.includes("location") ||
         x.includes("harada") ||
-        x.includes("yeriniz") ||
-        x.includes("google maps") ||
-        x.includes("waze") ||
         x.includes("adres") ||
-        x.includes("unvan")
+        x.includes("unvan") ||
+        x.includes("waze") ||
+        x.includes("maps")
     ){
 
         return data.location;
@@ -2066,9 +1928,9 @@ Konkret kottecin mövcudluğu üçün:
     if(
         x.includes("telefon") ||
         x.includes("nomre") ||
-        x.includes("elaqe") ||
         x.includes("whatsapp") ||
-        x.includes("whatsap")
+        x.includes("whatsap") ||
+        x.includes("elaqe")
     ){
 
         return data.contact;
@@ -2078,8 +1940,7 @@ Konkret kottecin mövcudluğu üçün:
 
     return `Bu sual üçün hazır məlumat bazamızda dəqiq cavab yoxdur.
 
-Zəhmət olmasa komandamızla əlaqə saxlayın,
-sizi məmnuniyyətlə cavablandıracaqlar.
+Sizi komandamıza yönləndirə bilərəm.
 
 📞 +994 50 309 93 92
 
@@ -2089,18 +1950,88 @@ sizi məmnuniyyətlə cavablandıracaqlar.
 
 
 /* =========================================================
-   SORĞU
+   ADD MESSAGE
+========================================================= */
+
+function add(text,who="bot"){
+
+    const wrap=document.createElement("div");
+
+    wrap.className=
+        "msg " + who;
+
+
+    if(who==="bot"){
+
+        const avatar=
+            document.createElement("div");
+
+        avatar.className=
+            "bot-avatar";
+
+        avatar.textContent="🤖";
+
+        wrap.appendChild(avatar);
+
+    }
+
+
+    const bubble=
+        document.createElement("div");
+
+    bubble.className=
+        "bubble";
+
+    bubble.textContent=text;
+
+    wrap.appendChild(bubble);
+
+
+    document
+        .getElementById("chat")
+        .appendChild(wrap);
+
+
+    scrollBottom();
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollBottom(){
+
+    const chat=
+        document.getElementById("chat");
+
+    requestAnimationFrame(()=>{
+
+        chat.scrollTop=
+            chat.scrollHeight;
+
+    });
+
+}
+
+
+/* =========================================================
+   ASK
 ========================================================= */
 
 function ask(question){
 
     add(question,"user");
 
-    setTimeout(function(){
+    setTimeout(()=>{
 
-        add(answer(question),"bot");
+        add(
+            answer(question),
+            "bot"
+        );
 
-    },300);
+    },280);
 
 }
 
@@ -2109,141 +2040,124 @@ function ask(question){
    FORM
 ========================================================= */
 
-const composer =
+const form=
     document.getElementById("composer");
 
-const input =
+const input=
     document.getElementById("input");
 
 
-composer.addEventListener("submit",function(event){
+form.addEventListener(
+    "submit",
+    function(event){
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const question=input.value.trim();
+        const question=
+            input.value.trim();
 
-    if(!question){
-        return;
+        if(!question){
+            return;
+        }
+
+        input.value="";
+
+        ask(question);
+
     }
-
-    input.value="";
-
-    ask(question);
-
-});
+);
 
 
 /* =========================================================
-   KLAVİATURA AÇILANDA APP-İ UYĞUNLAŞDIR
+   KEYBOARD DETECTION
 ========================================================= */
 
-function handleKeyboard(){
+let initialHeight=
+    window.innerHeight;
 
-    if(!window.visualViewport){
-        return;
-    }
 
-    const viewportHeight =
-        window.visualViewport.height;
+function checkKeyboard(){
 
-    const screenHeight =
+    const currentHeight=
         window.innerHeight;
 
-    const keyboardOpen =
-        screenHeight - viewportHeight > 120;
+    const difference=
+        initialHeight-currentHeight;
 
-    document.body.classList.toggle(
-        "keyboard-open",
-        keyboardOpen
-    );
 
-    if(keyboardOpen){
+    if(difference>120){
 
-        setTimeout(function(){
+        document.body
+            .classList
+            .add("keyboard-open");
 
-            scrollChat();
+    }else{
 
-        },80);
+        document.body
+            .classList
+            .remove("keyboard-open");
 
     }
 
 }
 
 
-if(window.visualViewport){
+window.addEventListener(
+    "resize",
+    checkKeyboard
+);
 
-    window.visualViewport.addEventListener(
-        "resize",
-        handleKeyboard
-    );
 
-    window.visualViewport.addEventListener(
-        "scroll",
-        handleKeyboard
-    );
+window.addEventListener(
+    "orientationchange",
+    function(){
 
-}
+        setTimeout(()=>{
+
+            initialHeight=
+                window.innerHeight;
+
+            checkKeyboard();
+
+        },300);
+
+    }
+);
 
 
 /* =========================================================
    INPUT FOCUS
 ========================================================= */
 
-input.addEventListener("focus",function(){
+input.addEventListener(
+    "focus",
+    function(){
 
-    setTimeout(function(){
+        setTimeout(()=>{
 
-        handleKeyboard();
-        scrollChat();
+            checkKeyboard();
+            scrollBottom();
 
-    },250);
-
-});
-
-
-input.addEventListener("blur",function(){
-
-    setTimeout(function(){
-
-        handleKeyboard();
-
-    },150);
-
-});
-
-
-/* =========================================================
-   ENTER
-========================================================= */
-
-input.addEventListener("keydown",function(event){
-
-    if(event.key==="Enter"){
-
-        event.preventDefault();
-
-        composer.requestSubmit();
+        },250);
 
     }
-
-});
+);
 
 
 /* =========================================================
-   SƏHİFƏ AÇILANDA
+   LOAD
 ========================================================= */
 
-window.addEventListener("load",function(){
+window.addEventListener(
+    "load",
+    function(){
 
-    scrollChat();
+        scrollBottom();
 
-    handleKeyboard();
-
-});
-
+    }
+);
 
 </script>
-
 
 </body>
 </html>
